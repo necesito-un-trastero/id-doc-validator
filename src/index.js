@@ -45,8 +45,6 @@ const supportedIdDocTypes = {
   },
 };
 
-isValidIdDoc("53872399M", "ES", "DNI");
-
 module.exports = {
   isValidIdDoc,
 };
