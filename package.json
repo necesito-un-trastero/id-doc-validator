@@ -1,0 +1,23 @@
+{
+  "name": "id-doc-validator",
+  "version": "0.0.1",
+  "homepage": "ADD GITHUB",
+  "description": "A validator for different types of personal ID for multiple countries.",
+  "main": "index.js",
+  "keywords": [
+    "validate",
+    "validation",
+    "validator",
+    "id",
+    "vat",
+    "nif",
+    "cif",
+    "passport"
+  ],
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Oscar González (https://github.com/ogonzi)",
+  "contributors": [],
+  "license": "MIT"
+}
