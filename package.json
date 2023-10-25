@@ -15,9 +15,14 @@
     "passport"
   ],
   "scripts": {
-    "test": "test"
+    "test": "npx jest",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "author": "Oscar González (https://github.com/ogonzi)",
   "contributors": [],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3"
+  }
 }
