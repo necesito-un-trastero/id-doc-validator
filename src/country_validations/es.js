@@ -24,6 +24,17 @@ const validateNifES = (nif) => {
   return true;
 };
 
+/**
+ * Validates a Spanish Número de Identificación de Extranjero (NIE) number.
+ *
+ * @param {string} nie - The NIE number to validate.
+ * @returns {boolean} - Returns true if the NIE is valid, false otherwise.
+ *
+ * This function checks if the provided NIE number adheres to the format requirements for a Spanish NIE:
+ * - It must start with a letter (X, Y, or Z), followed by 7 digits, and end with an uppercase letter.
+ * - The first letter is substituted with a number (X: 0, Y: 1, Z: 2) for the checksum.
+ * - The last character is a checksum letter obtained using the modulo 23 algorithm.
+ */
 const validateNieES = (nie) => {
   nie = nie.toUpperCase();
 
@@ -48,6 +59,15 @@ const validateNieES = (nie) => {
   return true;
 };
 
+/**
+ * Validates a Spanish passport number.
+ *
+ * @param {string} passport - The passport number to validate.
+ * @returns {boolean} - Returns true if the passport is valid, false otherwise.
+ *
+ * This function checks if the provided Spanish passport number adheres to the format requirements:
+ * - It must consist of 3 letters followed by 6 digits and an optional letter.
+ */
 const validatePassportES = (passport) => {
   passport = passport.toUpperCase();
 
@@ -60,6 +80,15 @@ const validatePassportES = (passport) => {
   return true;
 };
 
+/**
+ * Validates a Spanish Value Added Tax (VAT) number.
+ *
+ * @param {string} vat - The VAT number to validate.
+ * @returns {boolean} - Returns true if the VAT number is valid, false otherwise.
+ *
+ * This function checks if the provided Spanish VAT number adheres to the format requirements:
+ * - It must start with "ES" (for Spain), followed by a NIF format.
+ */
 const validateVatES = (vat) => {
   vat = vat.toUpperCase();
 
@@ -72,6 +101,14 @@ const validateVatES = (vat) => {
   return true;
 };
 
+/**
+ * Validates the checksum of a Spanish identity document using the modulo 23 algorithm.
+ *
+ * @param {string} idDoc - The identity document number to validate.
+ * @returns {boolean} - Returns true if the checksum is valid, false otherwise.
+ *
+ * This function performs a checksum validation based on the modulo 23 algorithm for Spanish identity documents.
+ */
 const validateModulo23AlgorithmChecksum = (idDoc) => {
   // Valid letters for control
   const validControlLetters = "TRWAGMYFPDXBNJZSQVHLCKE";
