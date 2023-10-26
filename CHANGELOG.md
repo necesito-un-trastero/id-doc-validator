@@ -13,7 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Error when validating FR id documents.
+
 ### Changed
+
+- If the last parameter is not passed, isValidIdDoc checks if the passed id doc is valid for any of the supported id docs for the country.
 
 ### Removed
 
