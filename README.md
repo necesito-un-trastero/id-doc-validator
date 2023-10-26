@@ -39,8 +39,8 @@ yarn add id-doc-validator
 To validate personal identification documents, use the `isValidIdDoc` function. It takes three parameters:
 
 - `idDoc` (string): The identification document number to validate.
-- `country` (string): The country code (e.g., "ES" for Spain, "FR" for France).
-- `idDocType` (string): The type of identification document to validate.
+- `country` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
+- `idDocType` (string): The type of identification document to validate.  For a list of supported identification document types, please refer to the expanded view of the [**Spain (ES)** section](#spain-es)
 
 ### Example Usage:
 
