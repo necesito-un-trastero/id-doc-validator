@@ -1,3 +1,5 @@
+const { testStringAgainstRegex } = require("../utils");
+
 /**
  * Validates a French Carte Nationale d'Identité (CNI) number.
  *
@@ -7,13 +9,8 @@
  * This function checks if the provided CNI number adheres to the expected format, which consists of 12 digits.
  */
 const validateCniFR = (cni) => {
-  cni = cni.toUpperCase();
-
-  // Regular expression to match a CNI with 12 digits
   const cniPattern = /^\d{12}$/;
-
-  // Check if the CNI matches the pattern
-  if (!cniPattern.test(cni)) return false;
+  if (!testStringAgainstRegex(cni, cniPattern)) return false;
 
   return true;
 };
@@ -28,13 +25,8 @@ const validateCniFR = (cni) => {
  * which consists of 2 digits, 2 letters, and 5 digits.
  */
 const validatePassportFR = (passport) => {
-  passport = passport.toUpperCase();
-
-  // Regular expression to match a French passport number with 2 digits, 2 letters and 5 digits
   const passportPattern = /^\d{2}[A-Z]{2}\d{5}$/;
-
-  // Check if the passport number matches the pattern
-  if (!passportPattern.test(passport)) return false;
+  if (!testStringAgainstRegex(passport, passportPattern)) return false;
 
   return true;
 };
@@ -49,16 +41,8 @@ const validatePassportFR = (passport) => {
  * starting with "FR" and followed by 11 alphanumeric characters (first two can be letters or digits, following 9 can only be digits).
  */
 const validateVatFR = (vat) => {
-  vat = vat.toUpperCase();
-
-  // Check if the VAT number starts with FR
-  if (vat.slice(0, 2) !== "FR") return false;
-
-  // Regular expression to match a french VAT: (XX999999999). The first two can be letters or digits, the rest must be digits
-  const vatPattern = /^[A-Z0-9]{2}\d{9}$/;
-
-  // Check if the VAT number matches the pattern
-  if (!vatPattern.test(vat.slice(2))) return false;
+  const vatPattern = /^FR[A-Z0-9]{2}\d{9}$/;
+  if (!testStringAgainstRegex(vat, vatPattern)) return false;
 
   return true;
 };

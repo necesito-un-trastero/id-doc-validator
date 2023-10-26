@@ -1,3 +1,5 @@
+const { testStringAgainstRegex } = require("../utils");
+
 /**
  * Validates a Spanish Número de Identificación Fiscal (NIF) number.
  *
@@ -10,15 +12,9 @@
  * - The algorithm ensures that the NIF number is correctly formatted and that the checksum is valid.
  */
 const validateNifES = (nif) => {
-  nif = nif.toUpperCase();
-
-  // Regular expression to match a DNI with 8 digits followed by an uppercase letter
   const nifPattern = /^\d{8}[A-Z]$/;
+  if (!testStringAgainstRegex(nif, nifPattern)) return false;
 
-  // Check if the NIF matches the pattern
-  if (!nifPattern.test(nif)) return false;
-
-  // Check the checksum
   if (!validateModulo23AlgorithmChecksum(nif)) return false;
 
   return true;
@@ -36,15 +32,9 @@ const validateNifES = (nif) => {
  * - The last character is a checksum letter obtained using the modulo 23 algorithm.
  */
 const validateNieES = (nie) => {
-  nie = nie.toUpperCase();
-
-  // Regular expression to match a NIE with a letter (X, Y, Z) followed by 7 digits followed by a letter
   const niePattern = /^[XYZ]\d{7}[A-Z]$/;
+  if (!testStringAgainstRegex(nie, niePattern)) return false;
 
-  // Check if the NIE matches the pattern
-  if (!niePattern.test(nie)) return false;
-
-  // Substitute the first letter with the corresponding number (X: 0, Y: 1, Z: 2) for the checksum
   const firstLetter = nie[0];
   const digitSubstitution = {
     X: "0",
@@ -69,13 +59,8 @@ const validateNieES = (nie) => {
  * - It must consist of 3 letters followed by 6 digits and an optional letter.
  */
 const validatePassportES = (passport) => {
-  passport = passport.toUpperCase();
-
-  // Regular expression to match a Spanish passport number
   const passportPattern = /^[A-Z]{3}\d{6}[A-Z]?$/;
-
-  // Check if the passport number matches the pattern
-  if (!passportPattern.test(passport)) return false;
+  if (!testStringAgainstRegex(passport, passportPattern)) return false;
 
   return true;
 };
@@ -110,6 +95,8 @@ const validateVatES = (vat) => {
  * This function performs a checksum validation based on the modulo 23 algorithm for Spanish identity documents.
  */
 const validateModulo23AlgorithmChecksum = (idDoc) => {
+  idDoc = idDoc.toUpperCase();
+
   // Valid letters for control
   const validControlLetters = "TRWAGMYFPDXBNJZSQVHLCKE";
 
