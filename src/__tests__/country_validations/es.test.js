@@ -14,8 +14,8 @@ describe("validateDniES", () => {
     expect(validateDniES("12345678-X")).toBe(false);
   });
 
-  it ("should return false for invalid checksum", () => {
+  it("should return false for invalid checksum", () => {
     expect(validateDniES("47008288a")).toBe(false);
     expect(validateDniES("92400040A")).toBe(false);
-  })
+  });
 });

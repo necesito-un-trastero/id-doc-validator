@@ -10,7 +10,11 @@ const isValidIdDoc = (idDoc, country, idDocType) => {
     throw new Error("Missing parameters");
   }
 
-  if (typeof idDoc !== "string" || typeof country !== "string" || typeof idDocType !== "string") {
+  if (
+    typeof idDoc !== "string" ||
+    typeof country !== "string" ||
+    typeof idDocType !== "string"
+  ) {
     throw new Error("Invalid parameters");
   }
 

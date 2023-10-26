@@ -17,7 +17,7 @@ const validateDniES = (dni) => {
 
   // Check if the DNI matches the pattern
   if (!dniPattern.test(dni)) return false;
-  
+
   // Check the checksum
   if (!validateDniChecksum(dni)) return false;
 
@@ -55,7 +55,7 @@ const validateDniChecksum = (dni) => {
   if (controlLetter !== dniLetter) return false;
 
   return true;
-}
+};
 
 module.exports = {
   validateDniES,
