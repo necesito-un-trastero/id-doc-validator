@@ -7,7 +7,7 @@ const {
 
 const isValidIdDoc = (idDoc, country, idDocType) => {
   if (!idDoc || !country || !idDocType) {
-    throw new Error("Missing parameters");
+    return false;
   }
 
   if (
@@ -15,24 +15,18 @@ const isValidIdDoc = (idDoc, country, idDocType) => {
     typeof country !== "string" ||
     typeof idDocType !== "string"
   ) {
-    throw new Error("Invalid parameters");
+    return false;
   }
 
   country = country.toUpperCase();
   idDocType = idDocType.toLowerCase();
 
   if (!supportedCountries.includes(country)) {
-    throw new Error(
-      `Country ${country} is not supported. Currently supported countries are: ${supportedCountries}`,
-    );
+    return false;
   }
 
   if (!supportedIdDocTypes[country]?.[idDocType]) {
-    throw new Error(
-      `IdDocType ${idDocType} is not supported for country ${country}. Supported types are: ${Object.keys(
-        supportedIdDocTypes[country],
-      )}`,
-    );
+    return false
   }
 
   return supportedIdDocTypes[country][idDocType](idDoc);
