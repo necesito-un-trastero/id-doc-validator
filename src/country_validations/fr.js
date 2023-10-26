@@ -16,7 +16,7 @@ const validateCniFR = (cni) => {
   if (!cniPattern.test(cni)) return false;
 
   return true;
-}
+};
 
 /**
  * Validates a French passport number.
@@ -37,7 +37,7 @@ const validatePassportFR = (passport) => {
   if (!passportPattern.test(passport)) return false;
 
   return true;
-}
+};
 
 /**
  * Validates a French Value Added Tax (VAT) number.
@@ -61,10 +61,10 @@ const validateVatFR = (vat) => {
   if (!vatPattern.test(vat.slice(2))) return false;
 
   return true;
-}
+};
 
 module.exports = {
   validateCniFR,
   validatePassportFR,
-  validateVatFR
-}
+  validateVatFR,
+};

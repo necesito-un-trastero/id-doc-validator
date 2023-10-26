@@ -1,4 +1,8 @@
-const { validateCniFR, validatePassportFR, validateVatFR } = require("../../country_validations/fr");
+const {
+  validateCniFR,
+  validatePassportFR,
+  validateVatFR,
+} = require("../../country_validations/fr");
 
 describe("validateCniFR", () => {
   it("should return true for valid CNI", () => {
@@ -11,7 +15,7 @@ describe("validateCniFR", () => {
     expect(validateCniFR("12345678901a")).toBe(false);
     expect(validateCniFR("123 456 789 012")).toBe(false);
   });
-})
+});
 
 describe("validatePassportFR", () => {
   it("should return true for valid passport", () => {
@@ -26,7 +30,7 @@ describe("validatePassportFR", () => {
     expect(validatePassportFR("47008288z")).toBe(false);
     expect(validatePassportFR("Z-3082433-R")).toBe(false);
   });
-})
+});
 
 describe("validateVatFR", () => {
   it("should return true for valid VAT", () => {
@@ -43,4 +47,4 @@ describe("validateVatFR", () => {
     expect(validateVatFR("FR1234567890a")).toBe(false);
     expect(validateVatFR("FR 123 456 789 01")).toBe(false);
   });
-})
+});
