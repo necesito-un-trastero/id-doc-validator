@@ -10,7 +10,7 @@ describe("isValidIdDoc", () => {
     );
   });
 
-  it ("should throw an error for invalid parameters", () => {
+  it("should throw an error for invalid parameters", () => {
     expect(() => isValidIdDoc(123456789, "ES", "dni")).toThrow(
       "Invalid parameters",
     );
@@ -20,7 +20,7 @@ describe("isValidIdDoc", () => {
     expect(() => isValidIdDoc("123456789", "ES", 123)).toThrow(
       "Invalid parameters",
     );
-  })
+  });
 
   it("should throw an error for an unsupported country", () => {
     expect(() => isValidIdDoc("123456789", "ZZ", "passport")).toThrow(
@@ -32,5 +32,9 @@ describe("isValidIdDoc", () => {
     expect(() => isValidIdDoc("123456789", "ES", "invalidType")).toThrow(
       "IdDocType invalidtype is not supported for country ES.",
     );
+  });
+
+  it("should return true for a valid id document", () => {
+    expect(isValidIdDoc("47008288Z", "ES", "dni")).toBe(true);
   });
 });
