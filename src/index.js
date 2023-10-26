@@ -1,4 +1,9 @@
 const {
+  validateGicDE,
+  validatePassportDE,
+  validateVatDE,
+} = require("./country_validations/de");
+const {
   validateNifES,
   validateNieES,
   validatePassportES,
@@ -52,6 +57,11 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
 const supportedCountries = ["ES", "FR"];
 
 const supportedIdDocTypes = {
+  DE: {
+    gic: validateGicDE,
+    passport: validatePassportDE,
+    vat: validateVatDE,
+  },
   ES: {
     dni: validateNifES,
     nif: validateNifES,

@@ -7,13 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.5] - 2023-10-26
+## [0.2.0] - 2023-10-26
 
 ### Added
+
+- Added support for German: Identity Card, VAT and Passport validation.
 
 ### Fixed
 
 ### Changed
+
+- Updated README.md with new supported countries and identification document types.
 
 ### Removed
 
