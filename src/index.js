@@ -38,7 +38,7 @@ const isValidIdDoc = (idDoc, country, idDocType) => {
   return supportedIdDocTypes[country][idDocType](idDoc);
 };
 
-const supportedCountries = ["ES"];
+const supportedCountries = ["ES", "FR"];
 
 const supportedIdDocTypes = {
   ES: {
@@ -48,6 +48,11 @@ const supportedIdDocTypes = {
     passport: validatePassportES,
     vat: validateVatES,
   },
+  FR: {
+    cni: "",
+    passport: "",
+    vat: ""
+  }
 };
 
 module.exports = {
