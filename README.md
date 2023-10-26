@@ -15,7 +15,6 @@ A validator for different types of personal ID for multiple countries.
 <details>
 <summary><strong>Spain</strong></summary>
 
-- **Supported ID Documents:**
   - DNI (Documento Nacional de Identidad)
   - NIF (Número de Identificación Fiscal)
   - NIE (Número de Identificación de Extranjero)
