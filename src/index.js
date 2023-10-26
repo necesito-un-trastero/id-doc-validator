@@ -2,6 +2,7 @@ const {
   validateNifES,
   validateNieES,
   validatePassportES,
+  validateVatES,
 } = require("./country_validations/es");
 
 const isValidIdDoc = (idDoc, country, idDocType) => {
@@ -41,6 +42,7 @@ const supportedIdDocTypes = {
     nif: validateNifES,
     nie: validateNieES,
     passport: validatePassportES,
+    vat: validateVatES,
   },
 };
 

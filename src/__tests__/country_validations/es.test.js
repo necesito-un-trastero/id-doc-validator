@@ -1,4 +1,4 @@
-const { validateNifES, validateNieES } = require("../../country_validations/es");
+const { validateNifES, validateNieES, validatePassportES, validateVatES } = require("../../country_validations/es");
 
 describe("validateNifES", () => {
   it("should return true for valid DNI", () => {
@@ -41,5 +41,40 @@ describe("validateNieES", () => {
     expect(validateNieES("Y7227117A")).toBe(false);
     expect(validateNieES("Y4731627A")).toBe(false);
     expect(validateNieES("X9153879A")).toBe(false);
+  })
+})
+
+describe("validatePassportES", () => {
+  it("should return true for valid passport", () => {
+    expect(validatePassportES("paa333388")).toBe(true);
+    expect(validatePassportES("ZAB000234")).toBe(true);
+    expect(validatePassportES("ZAB000234J")).toBe(true);
+  })
+
+  it("should return false for invalid passport", () => {
+    expect(validatePassportES("12345678")).toBe(false);
+    expect(validatePassportES("12345678X1")).toBe(false);
+    expect(validatePassportES("12345678-X")).toBe(false);
+    expect(validatePassportES("A3082433R")).toBe(false);
+    expect(validatePassportES("47008288z")).toBe(false);
+    expect(validatePassportES("Z-3082433-R")).toBe(false);
+    expect(validatePassportES("ZA000234A")).toBe(false);
+  })
+})
+
+describe("validateVatES", () => {
+  it("should return true for valid VAT", () => {
+    expect(validateVatES("ES47008288Z")).toBe(true);
+    expect(validateVatES("ES92400040R")).toBe(true);
+    expect(validateVatES("ES01899814Z")).toBe(true);
+  })
+
+  it("should return false for invalid VAT", () => {
+    expect(validateVatES("ES12345678")).toBe(false);
+    expect(validateVatES("ES12345678X1")).toBe(false);
+    expect(validateVatES("ES12345678-X")).toBe(false);
+    expect(validateVatES("US47008288z")).toBe(false);
+    expect(validateVatES("ES-3082433-R")).toBe(false);
+    expect(validateVatES("01899814Z")).toBe(false);
   })
 })

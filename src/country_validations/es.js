@@ -49,8 +49,28 @@ const validateNieES = (nie) => {
 };
 
 const validatePassportES = (passport) => {
+  passport = passport.toUpperCase();
+
+  // Regular expression to match a Spanish passport number
+  const passportPattern = /^[A-Z]{3}\d{6}[A-Z]?$/;
+
+  // Check if the passport number matches the pattern
+  if (!passportPattern.test(passport)) return false;
+
   return true;
 };
+
+const validateVatES = (vat) => {
+  vat = vat.toUpperCase();
+
+  // Check if the VAT number starts with ES
+  if (vat.slice(0, 2) !== "ES") return false;
+
+  // Check if the VAT number (without starting ES) is a valid NIF
+  if (!validateNifES(vat.slice(2))) return false;
+
+  return true;
+}
 
 const validateModulo23AlgorithmChecksum = (idDoc) => {
   // Valid letters for control
@@ -75,7 +95,8 @@ const validateModulo23AlgorithmChecksum = (idDoc) => {
 
 
 module.exports = {
-  validateNifES,
   validateNieES,
+  validateNifES,
   validatePassportES,
+  validateVatES
 };
