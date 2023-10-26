@@ -1,5 +1,4 @@
 const {
-  validateDniES,
   validateNifES,
   validateNieES,
   validatePassportES,
@@ -38,7 +37,7 @@ const supportedCountries = ["ES"];
 
 const supportedIdDocTypes = {
   ES: {
-    dni: validateDniES,
+    dni: validateNifES,
     nif: validateNifES,
     nie: validateNieES,
     passport: validatePassportES,

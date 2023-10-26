@@ -33,4 +33,8 @@ describe("isValidIdDoc", () => {
       "IdDocType invalidtype is not supported for country ES.",
     );
   });
+
+  it("should return true for a valid id document", () => {
+    expect(isValidIdDoc("47008288Z", "ES", "dni")).toBe(true);
+  })
 });
