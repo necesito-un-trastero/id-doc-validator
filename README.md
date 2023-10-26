@@ -24,6 +24,16 @@ A validator for different types of personal ID for multiple countries.
 
 </details>
 
+## Installation
+
+To use the `id-doc-validator` library in your project, you can install it via npm or yarn:
+
+```bash
+npm install id-doc-validator
+# OR
+yarn add id-doc-validator
+```
+
 ## How to Use
 
 To validate personal identification documents, use the `isValidIdDoc` function. It takes three parameters:
@@ -35,6 +45,9 @@ To validate personal identification documents, use the `isValidIdDoc` function. 
 ### Example Usage:
 
 ```javascript
+// Import the id-doc-validator library
+const { isValidIdDoc } = require('id-doc-validator');
+
 const idDoc = "your_identification_number";
 const country = "ES"; // Country code
 const idDocType = "DNI"; // Type of identification document
