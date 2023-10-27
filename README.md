@@ -23,6 +23,15 @@ A validator for different types of personal ID for multiple countries.
 </details>
 
 <details>
+<summary><strong>Italy (IT)</strong></summary>
+
+- CF (Codice Fiscale)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Spain (ES)</strong></summary>
 
 - DNI (Documento Nacional de Identidad)
