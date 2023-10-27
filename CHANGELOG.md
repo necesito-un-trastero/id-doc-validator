@@ -7,6 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.1] - 2023-10-26
+
+### Added
+
+### Fixed
+
+### Changed
+
+### Removed
+
+## [0.3.0] - 2023-10-27
+
+### Added
+
+- Added support for Italian: Fiscal Code (Codice Fiscale), VAT and Passport validation.
+
+### Fixed
+
+- Error when validating DE id documents.
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
 ## [0.2.0] - 2023-10-26
 
 ### Added

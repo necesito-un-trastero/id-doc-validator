@@ -14,6 +14,11 @@ const {
   validatePassportFR,
   validateVatFR,
 } = require("./country_validations/fr");
+const {
+  validateCfIT,
+  validatePassportIT,
+  validateVatIT,
+} = require("./country_validations/it");
 
 const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (!idDoc || !country) {
@@ -53,8 +58,7 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
     return supportedIdDocTypes[country][idDocType](idDoc);
   }
 };
-
-const supportedCountries = ["ES", "FR"];
+const supportedCountries = ["DE", "ES", "FR", "IT"];
 
 const supportedIdDocTypes = {
   DE: {
@@ -73,6 +77,11 @@ const supportedIdDocTypes = {
     cni: validateCniFR,
     passport: validatePassportFR,
     vat: validateVatFR,
+  },
+  IT: {
+    cf: validateCfIT,
+    passport: validatePassportIT,
+    vat: validateVatIT,
   },
 };
 
