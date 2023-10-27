@@ -47,7 +47,7 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (idDocType === "") {
     // Try to validate the ID document as any of the supported types
     for (const [idDocType, validator] of Object.entries(
-      supportedIdDocTypes[country]
+      supportedIdDocTypes[country],
     )) {
       if (validator(idDoc)) {
         return true;
