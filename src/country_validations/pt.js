@@ -45,8 +45,8 @@ const validateNifPT = (nif) => {
   for (let i = 0; i < 8; i++) {
     added += parseInt(nif[i]) * (9 - i);
   }
-  
-  let control = (added % 11 <= 1) ? 0 : 11 - (added % 11);
+
+  let control = added % 11 <= 1 ? 0 : 11 - (added % 11);
 
   return parseInt(nif[8]) === control;
 };
@@ -72,23 +72,29 @@ const validateChecksum = (cartaoCidadao) => {
   let secondDigit = false;
 
   for (let i = cartaoCidadao.length - 1; i >= 0; --i) {
-    const valor = getNumberFromChar(cartaoCidadao[i]);
-    if (secondDigit)
-      valor = valor * 2 > 9 ? valor * 2 - 9 : valor * 2;
-    sum += valor;
-    secondDigit = !secondDigit;
+    let value = getNumberFromChar(cartaoCidadao[i]);
+    if (value > -1) {
+      if (secondDigit) {
+        value = value * 2;
+        if (value > 9) {
+          value = value - 9;
+        }
+      }
+      sum += value;
+      secondDigit = !secondDigit;
+    }
   }
 
   return sum % 10 === 0;
-}
+};
 
 const getNumberFromChar = (value) => {
   const charCode = value.toUpperCase().charCodeAt(0);
 
-  if (charCode >= 48 && charCode <= 57)
-    return charCode - 48;
-  else return charCode - 55;
-}
+  if (charCode >= 48 && charCode <= 57) return charCode - 48;
+  else if (charCode >= 65 && charCode <= 90) return charCode - 55;
+  else return -1;
+};
 
 module.exports = {
   validateCartaoCidadaoPT,
