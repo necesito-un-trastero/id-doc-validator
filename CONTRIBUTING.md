@@ -28,7 +28,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[id-doc-validator Code of Conduct](https://github.com/necesito-un-trastero/id-doc-validator/blob//CODE_OF_CONDUCT.md).
+[id-doc-validator Code of Conduct](https://github.com/necesito-un-trastero/id-doc-validator/blob/main/CODE_OF_CONDUCT.md).
 By participating, you are expected to uphold this code. Please report unacceptable behaviour
 to .
 
