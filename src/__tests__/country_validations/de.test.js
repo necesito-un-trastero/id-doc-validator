@@ -34,11 +34,23 @@ describe("validatePassportDE", () => {
   });
 
   it("should return false for an invalid passport", () => {
-    expect(validateVatDE("c123CFG4")).toBe(false);
-    expect(validateVatDE("c123CFG4567")).toBe(false);
-    expect(validateVatDE("c123CFG456de")).toBe(false);
-    expect(validateVatDE("c-123CFG456")).toBe(false);
-    expect(validateVatDE("Z12341234")).toBe(false);
-    expect(validateVatDE("H0123U123")).toBe(false);
+    expect(validatePassportDE("c123CFG4")).toBe(false);
+    expect(validatePassportDE("c123CFG4567")).toBe(false);
+    expect(validatePassportDE("c123CFG456de")).toBe(false);
+    expect(validatePassportDE("c-123CFG456")).toBe(false);
+    expect(validatePassportDE("Z12341234")).toBe(false);
+    expect(validatePassportDE("H0123U123")).toBe(false);
+  });
+});
+
+describe("validateVatDE", () => {
+  it("should return true for a valid VAT", () => {
+    expect(validateVatDE("DE12345678901")).toBe(true);
+  });
+
+  it("should return false for an invalid VAT", () => {
+    expect(validateVatDE("12345678901")).toBe(false);
+    expect(validateVatDE("DE1234567890")).toBe(false);
+    expect(validateVatDE("DE123456789012")).toBe(false);
   });
 });
