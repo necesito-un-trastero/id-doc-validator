@@ -19,6 +19,12 @@ const {
   validatePassportIT,
   validateVatIT,
 } = require("./country_validations/it");
+const {
+  validateCcPT,
+  validateNifPT,
+  validatePassportPT,
+  validateVatPT,
+} = require("./country_validations/pt");
 
 const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (!idDoc || !country) {
@@ -47,7 +53,7 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (idDocType === "") {
     // Try to validate the ID document as any of the supported types
     for (const [idDocType, validator] of Object.entries(
-      supportedIdDocTypes[country],
+      supportedIdDocTypes[country]
     )) {
       if (validator(idDoc)) {
         return true;
@@ -58,7 +64,6 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
     return supportedIdDocTypes[country][idDocType](idDoc);
   }
 };
-const supportedCountries = ["DE", "ES", "FR", "IT"];
 
 const supportedIdDocTypes = {
   DE: {
@@ -83,7 +88,15 @@ const supportedIdDocTypes = {
     passport: validatePassportIT,
     vat: validateVatIT,
   },
+  PT: {
+    cc: validateCcPT,
+    nif: validateNifPT,
+    passport: validatePassportPT,
+    vat: validateVatPT,
+  },
 };
+
+const supportedCountries = Object.keys(supportedIdDocTypes);
 
 module.exports = {
   isValidIdDoc,

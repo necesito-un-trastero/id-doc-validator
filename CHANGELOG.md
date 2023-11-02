@@ -7,13 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.3.1] - 2023-10-26
+## [0.4.0] - 2023-10-26
 
 ### Added
 
 ### Fixed
 
 ### Changed
+
+### Removed
+
+## [0.4.0] - 2023-10-26
+
+### Added
+
+- Added support for Portuguese: Citizen Card (Cartão de Cidadão), NIF (Número de Identificação Fiscal) VAT and Passport validation.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
 
 ### Removed
 
