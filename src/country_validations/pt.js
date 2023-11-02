@@ -1,15 +1,20 @@
+const {
+  testStringAgainstRegex,
+  getNumberFromChar,
+  isValidLuhn,
+} = require("../utils");
+
 /**
  * Validates a Portuguese "Cartão de Cidadão" number.
  *
  * @param {string} cartaoCidadao - The Portuguese "Cartão de Cidadão" number to validate.
  * @returns {boolean} - Returns true if the "Cartão de Cidadão" number is valid, false otherwise.
  */
-const validateCartaoCidadaoPT = (cartaoCidadao) => {
-  // Regular expression for "Cartão de Cidadão" validation
-  const cartaoCidadaoPattern = /^\d{8}[ -]?\d[ -]?[A-Z0-9]{2}\d$/;
+const validateCcPT = (cc) => {
+  const ccPattern = /^\d{8}[ -]?\d[ -]?[A-Z0-9]{2}\d$/;
+  if (!testStringAgainstRegex(cc, ccPattern)) return false;
 
-  if (!cartaoCidadaoPattern.test(cartaoCidadao)) return false;
-  if (!validateChecksum(cartaoCidadao)) return false;
+  if (!validateChecksum(cc)) return false;
 
   return true;
 };
@@ -22,9 +27,9 @@ const validateCartaoCidadaoPT = (cartaoCidadao) => {
  */
 const validatePassportPT = (passport) => {
   // Regular expression for Portuguese passport validation
-  const passportPattern = /^[A-Za-z]\d{6}$/;
+  const passportPattern = /^[A-Z]\d{6}$/;
 
-  if (!passportPattern.test(passport)) return false;
+  if (!testStringAgainstRegex(passport, passportPattern)) return false;
   return true;
 };
 
@@ -35,20 +40,12 @@ const validatePassportPT = (passport) => {
  * @returns {boolean} - Returns true if the NIF number is valid, false otherwise.
  */
 const validateNifPT = (nif) => {
-  // Regular expression for NIF validation
   const nifPattern = /^\d{9}$/;
 
-  if (!nifPattern.test(nif)) return false;
+  if (!testStringAgainstRegex(nif, nifPattern)) return false;
+  if (!validateNifControlDigit(nif)) return false;
 
-  // Implement specific validation criteria for NIF
-  let added = 0;
-  for (let i = 0; i < 8; i++) {
-    added += parseInt(nif[i]) * (9 - i);
-  }
-
-  let control = added % 11 <= 1 ? 0 : 11 - (added % 11);
-
-  return parseInt(nif[8]) === control;
+  return true;
 };
 
 /**
@@ -61,18 +58,26 @@ const validateVatPT = (vat) => {
   // Regular expression for VAT validation
   const vatPattern = /^PT\d{9}$/;
 
-  if (!vatPattern.test(vat)) return false;
+  if (!testStringAgainstRegex(vat, vatPattern)) return false;
   if (!validateNifPT(vat.slice(2))) return false;
 
   return true;
 };
 
-const validateChecksum = (cartaoCidadao) => {
+/**
+ * Validates a "Cartão de Cidadão" number using the Luhn algorithm.
+ *
+ * @param {string} cc - The "Cartão de Cidadão" number to validate.
+ * @returns {boolean} - Returns true if the "Cartão de Cidadão" number is valid, false otherwise.
+ *
+ * This function checks if the provided "Cartão de Cidadão" number passes the Luhn algorithm.
+ */
+const validateChecksum = (cc) => {
   let sum = 0;
   let secondDigit = false;
 
-  for (let i = cartaoCidadao.length - 1; i >= 0; --i) {
-    let value = getNumberFromChar(cartaoCidadao[i]);
+  for (let i = cc.length - 1; i >= 0; --i) {
+    let value = getNumberFromChar(cc[i]);
     if (value > -1) {
       if (secondDigit) {
         value = value * 2;
@@ -88,16 +93,27 @@ const validateChecksum = (cartaoCidadao) => {
   return sum % 10 === 0;
 };
 
-const getNumberFromChar = (value) => {
-  const charCode = value.toUpperCase().charCodeAt(0);
+/**
+ * Validates the control digit of a Portuguese NIF (Número de Identificação Fiscal).
+ *
+ * @param {string} nif - The NIF number to validate.
+ * @returns {boolean} - Returns true if the control digit of the NIF is valid, false otherwise.
+ *
+ * This function checks the control digit of a Portuguese NIF to ensure it matches the calculated control digit.
+ */
+const validateNifControlDigit = (nif) => {
+  let added = 0;
+  for (let i = 0; i < 8; i++) {
+    added += parseInt(nif[i]) * (9 - i);
+  }
 
-  if (charCode >= 48 && charCode <= 57) return charCode - 48;
-  else if (charCode >= 65 && charCode <= 90) return charCode - 55;
-  else return -1;
+  let control = added % 11 <= 1 ? 0 : 11 - (added % 11);
+
+  return parseInt(nif[8]) === control;
 };
 
 module.exports = {
-  validateCartaoCidadaoPT,
+  validateCcPT,
   validatePassportPT,
   validateNifPT,
   validateVatPT,

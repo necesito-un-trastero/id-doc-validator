@@ -42,6 +42,16 @@ A validator for different types of personal ID for multiple countries.
 
 </details>
 
+<details>
+<summary><strong>Portugal (PT)</strong></summary>
+
+- CC (Cartão de Cidadão)
+- NIF (Número de Identificação Fiscal)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
 ## Installation
 
 To use the `id-doc-validator` library in your project, you can install it via npm or yarn:

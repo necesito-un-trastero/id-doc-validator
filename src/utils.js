@@ -41,7 +41,7 @@ const isValidLuhn = (inputString) => {
   // Transform the input string to uppercase
   inputString = inputString.toUpperCase();
 
-  // Check if the input string contains only digits
+  // // Check if the input string contains only digits
   if (!/^\d+$/.test(inputString)) return false;
 
   // Check if the input string is at least 2 characters long
@@ -67,7 +67,24 @@ const isValidLuhn = (inputString) => {
   return providedLuhnCheckDigit === expectedCheckDigit;
 };
 
+/**
+ * Converts a character to its numeric equivalent based on its ASCII value.
+ *
+ * @param {string} value - The character to convert.
+ * @returns {number} - The numeric equivalent of the character or -1 if the character is not numeric or an uppercase letter.
+ *
+ * This function is used to map characters to their numeric values in order to calculate control digits.
+ */
+const getNumberFromChar = (value) => {
+  const charCode = value.toUpperCase().charCodeAt(0);
+
+  if (charCode >= 48 && charCode <= 57) return charCode - 48;
+  else if (charCode >= 65 && charCode <= 90) return charCode - 55;
+  else return -1;
+};
+
 module.exports = {
-  testStringAgainstRegex,
+  getNumberFromChar,
   isValidLuhn,
+  testStringAgainstRegex,
 };
