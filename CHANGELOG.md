@@ -5,13 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-## [0.5.0] - 2023-11-07
+## [0.4.5] - 2023-11-07
 
 ### Added
 
-- Added support for VAT and passport number for the following countries (no check digit calculation is currently performed for any of these countries, it will be added in the future): Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, Greece, Hungary, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Romania, Slovakia, Slovenia and Sweden.
+- Added support for VAT and passport number for the following country: Republic of Cyprus.
 
 ### Fixed
 

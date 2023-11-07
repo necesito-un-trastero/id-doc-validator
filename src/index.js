@@ -11,6 +11,10 @@ const {
   validateVatBG,
 } = require("./country_validations/bg");
 const {
+  validateVatCY,
+  validatePassportCY,
+} = require("./country_validations/cy");
+const {
   validateGicDE,
   validatePassportDE,
   validateVatDE,
@@ -93,6 +97,10 @@ const supportedIdDocTypes = {
   BG: {
     passport: validatePassportBG,
     vat: validateVatBG,
+  },
+  CY: {
+    passport: validatePassportCY,
+    vat: validateVatCY,
   },
   DE: {
     gic: validateGicDE,

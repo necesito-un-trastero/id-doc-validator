@@ -64,6 +64,14 @@ A validator for different types of personal ID for multiple countries.
 </details>
 
 <details>
+<summary><strong>Republic of Cyprus (CY)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Spain (ES)</strong></summary>
 
 - DNI (Documento Nacional de Identidad)
