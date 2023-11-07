@@ -7,13 +7,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.4.1] - 2023-11-02
+## [0.5.0] - 2023-11-07
 
 ### Added
+
+- Added support for VAT and passport number for the following countries (no check digit calculation is currently performed for any of these countries, it will be added in the future): Austria, Belgium, Bulgaria, Croatia, Republic of Cyprus, Czech Republic, Denmark, Estonia, Finland, Greece, Hungary, Ireland, Latvia, Lithuania, Luxembourg, Malta, Netherlands, Poland, Romania, Slovakia, Slovenia and Sweden.
 
 ### Fixed
 
 ### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.1] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Austria
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
 
 ### Removed
 
