@@ -21,6 +21,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.4.3] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Bulgaria.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
 ## [0.4.2] - 2023-11-07
 
 ### Added
