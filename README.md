@@ -29,6 +29,14 @@ A validator for different types of personal ID for multiple countries.
 </details>
 
 <details>
+<summary><strong>Czech Republic (CZ)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Croatia (HR)</strong></summary>
 
 - Passport

@@ -142,4 +142,12 @@ describe("isValidIdDoc", () => {
   it("should return true for a valid vat from CY", () => {
     expect(isValidIdDoc("CY12345678A", "CY", "vat")).toBe(true);
   });
+
+  it("should return true for a valid passport from CZ", () => {
+    expect(isValidIdDoc("12345678", "CZ", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid vat from CZ", () => {
+    expect(isValidIdDoc("CZ123456789", "CZ", "vat")).toBe(true);
+  });
 });
