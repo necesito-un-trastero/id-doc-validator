@@ -1,6 +1,6 @@
 # id-doc-validator
 
-A validator for different types of personal ID for multiple countries.
+A validator for different types of personal, entity and VAT ID for multiple countries.
 
 ## Supported Countries
 
@@ -46,6 +46,14 @@ A validator for different types of personal ID for multiple countries.
 
 <details>
 <summary><strong>Denmark (DK)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Estonia (EE)</strong></summary>
 
 - Passport
 - VAT (Value Added Tax ID)
@@ -144,3 +152,8 @@ if (isValid) {
   console.log("The identification document is not valid.");
 }
 ```
+
+## Resources
+
+- [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)
+- [Consilium Europa - Check Document numbers](https://www.consilium.europa.eu/prado/en/check-document-numbers/check-document-numbers.pdf)
