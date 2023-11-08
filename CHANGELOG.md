@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2023-11-08
+
+### Added
+
+- Added support for VAT and passport number for the following country: Greece.
+- Added a new function to check the validity of VAT numbers for EU countries using the VIES API: `isValidEUVat`.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+- Updated README.md with new function `isValidEUVat`.
+
+### Removed
+
 ## [0.4.9] - 2023-11-08
 
 ### Added

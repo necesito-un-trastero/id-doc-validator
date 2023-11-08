@@ -1,4 +1,4 @@
-const { isValidIdDoc } = require("..");
+const { isValidIdDoc, isValidEUVat } = require("..");
 
 describe("isValidIdDoc", () => {
   it("should return false for missing parameters", () => {
@@ -174,4 +174,45 @@ describe("isValidIdDoc", () => {
   it("should return true for a valid vat from FI", () => {
     expect(isValidIdDoc("FI12345672", "FI", "vat")).toBe(true);
   });
+
+  it("should return true for a valid passport from GR", () => {
+    expect(isValidIdDoc("AA1234567", "GR", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid vat from GR", () => {
+    expect(isValidIdDoc("EL123456789", "GR", "vat")).toBe(true);
+  });
+});
+
+describe("isValidEUVat", () => {
+  it("should return an object with isValid true if the request didn't fail for a valid VAT", async () => {
+    const { isValid, userError, vatNumber } = await isValidEUVat(
+      "W0184081H",
+      "ES"
+    );
+    if (userError === "VALID") {
+      expect(isValid).toBe(true);
+    } else {
+      expect(isValid).toBe(false);
+    }
+    expect(vatNumber).toBe("W0184081H");
+  }, 30000);
+
+  it("should return an object with isValid true if the request didn't fail for a valid VAT with country code", async () => {
+    const { isValid, userError, vatNumber } = await isValidEUVat(
+      "ESW0184081H",
+      "ES"
+    );
+    if (userError === "VALID") {
+      expect(isValid).toBe(true);
+    } else {
+      expect(isValid).toBe(false);
+    }
+    expect(vatNumber).toBe("W0184081H");
+  }, 30000);
+
+  it("should return an object with isValid false for an invalid VAT", async () => {
+    const { isValid } = await isValidEUVat("W018408", "ES");
+    expect(isValid).toBe(false);
+  }, 30000);
 });

@@ -1,3 +1,4 @@
+const { default: axios } = require("axios");
 const {
   validatePassportAT,
   validateVatAT,
@@ -46,6 +47,10 @@ const {
   validatePassportFR,
   validateVatFR,
 } = require("./country_validations/fr");
+const {
+  validateVatGR,
+  validatePassportGR,
+} = require("./country_validations/gr");
 const {
   validatePassportHR,
   validateVatHR,
@@ -101,6 +106,30 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   }
 };
 
+const isValidEUVat = async (vatNumber, countryCode) => {
+  const viesApiEndpoint =
+    "https://ec.europa.eu/taxation_customs/vies/rest-api/ms/" +
+    countryCode +
+    "/vat/" +
+    vatNumber;
+
+  try {
+    const response = await axios.get(viesApiEndpoint);
+    const { isValid, userError, vatNumber } = response.data;
+    return {
+      isValid,
+      userError,
+      vatNumber,
+    };
+  } catch (error) {
+    return {
+      isValid: false,
+      requestError: error.message,
+      vatNumber,
+    };
+  }
+};
+
 const supportedIdDocTypes = {
   AT: {
     passport: validatePassportAT,
@@ -151,6 +180,10 @@ const supportedIdDocTypes = {
     passport: validatePassportFR,
     vat: validateVatFR,
   },
+  GR: {
+    passport: validatePassportGR,
+    vat: validateVatGR,
+  },
   HR: {
     passport: validatePassportHR,
     vat: validateVatHR,
@@ -171,5 +204,6 @@ const supportedIdDocTypes = {
 const supportedCountries = Object.keys(supportedIdDocTypes);
 
 module.exports = {
+  isValidEUVat,
   isValidIdDoc,
 };

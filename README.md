@@ -87,6 +87,14 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
+<summary><strong>Greece (GR)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Italy (IT)</strong></summary>
 
 - CF (Codice Fiscale)
@@ -161,7 +169,43 @@ if (isValid) {
 }
 ```
 
+To validate a VAT number for an EU member state, use the `isValidEUVat` function. This function uses the API provided by the European Commission to validate the VAT number. It takes two parameters:
+
+- `vatNumber` (string): The VAT number to validate. Should not include the country code.
+- `countryCode` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
+
+It returns an object with the following properties:
+
+- `isValid` (boolean): Whether the VAT number is valid or not.
+- `userError` (boolean): The error returned by the VIES API. If the request was successful, it will equal 'VALID' or 'INVALID'. If the request was not successful, it will return a string with the error code.
+- `vatNumber` (string): The VAT number actually validated. For example, if the passed VAT number is "ES12345678", the returned VAT number will be "12345678", without the country code.
+
+Please note that the VIES API is very limited in the number of requests it can handle. Please use moderately and expect the service to be unavailable at times.
+
+### Example Usage:
+
+```javascript
+// Import the id-doc-validator library
+const { isValidEUVat } = require("id-doc-validator");
+
+const vatNumberToCheck = "your_vat_number";
+const countryCode = "CC"; // Country code
+
+const { isValid, userError, vatNumber } = await isValidEUVat(
+  vatNumberToCheck,
+  countryCode
+);
+
+if (isValid) {
+  console.log("The VAT number is valid.");
+} else {
+  if (userError === "INVALID") console.log("The VAT number is not valid.");
+  else console.log("There was an error validating the VAT number.");
+}
+```
+
 ## Resources
 
 - [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1)
 - [Consilium Europa - Check Document numbers](https://www.consilium.europa.eu/prado/en/check-document-numbers/check-document-numbers.pdf)
+- [VIES VAT number validation](https://ec.europa.eu/taxation_customs/vies/#/vat-validation)
