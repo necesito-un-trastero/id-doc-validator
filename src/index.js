@@ -38,6 +38,10 @@ const {
   validateVatES,
 } = require("./country_validations/es");
 const {
+  validateVatFI,
+  validatePassportFI,
+} = require("./country_validations/fi");
+const {
   validateCniFR,
   validatePassportFR,
   validateVatFR,
@@ -137,6 +141,10 @@ const supportedIdDocTypes = {
     nie: validateNieES,
     passport: validatePassportES,
     vat: validateVatES,
+  },
+  FI: {
+    passport: validatePassportFI,
+    vat: validateVatFI,
   },
   FR: {
     cni: validateCniFR,
