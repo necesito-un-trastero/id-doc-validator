@@ -24,6 +24,10 @@ const {
   validateVatDE,
 } = require("./country_validations/de");
 const {
+  validateVatDK,
+  validatePassportDK,
+} = require("./country_validations/dk");
+const {
   validateNifES,
   validateNieES,
   validatePassportES,
@@ -114,6 +118,10 @@ const supportedIdDocTypes = {
     gic: validateGicDE,
     passport: validatePassportDE,
     vat: validateVatDE,
+  },
+  DK: {
+    passport: validatePassportDK,
+    vat: validateVatDK,
   },
   ES: {
     dni: validateNifES,
