@@ -120,6 +120,14 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
+<summary><strong>Latvia (LV)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Republic of Cyprus (CY)</strong></summary>
 
 - Passport

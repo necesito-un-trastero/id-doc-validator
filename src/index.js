@@ -74,6 +74,10 @@ const {
   validateVatIE,
   validatePassportIE,
 } = require("./country_validations/ie");
+const {
+  validateVatLV,
+  validatePassportLV,
+} = require("./country_validations/lv");
 
 const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (!idDoc || !country) {
@@ -208,6 +212,10 @@ const supportedIdDocTypes = {
     cf: validateCfIT,
     passport: validatePassportIT,
     vat: validateVatIT,
+  },
+  LV: {
+    passport: validatePassportLV,
+    vat: validateVatLV,
   },
   PT: {
     cc: validateCcPT,
