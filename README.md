@@ -95,6 +95,14 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
+<summary><strong>Hungary (HU)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Italy (IT)</strong></summary>
 
 - CF (Codice Fiscale)
