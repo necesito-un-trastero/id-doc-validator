@@ -168,13 +168,15 @@ yarn add id-doc-validator
 
 ## How to Use
 
+### `isValidIdDoc`
+
 To validate personal identification documents, use the `isValidIdDoc` function. It takes three parameters:
 
 - `idDoc` (string): The identification document number to validate.
 - `country` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
 - `idDocType` (string, optional): The type of identification document to validate. For a list of supported identification document types, please refer to the expanded view of the [**Supported Countries**](#supported-countries). If this parameter is not passed, the function will check if the passed id doc is valid for any of the supported id docs for the country.
 
-### Example Usage:
+#### Example Usage:
 
 ```javascript
 // Import the id-doc-validator library
@@ -193,6 +195,8 @@ if (isValid) {
 }
 ```
 
+### `isValidVat`
+
 To validate a VAT number for an EU member state, use the `isValidEUVat` function. This function uses the API provided by the European Commission to validate the VAT number. It takes two parameters:
 
 - `vatNumber` (string): The VAT number to validate. Should not include the country code.
@@ -206,7 +210,7 @@ It returns an object with the following properties:
 
 Please note that the VIES API is very limited in the number of requests it can handle. Please use moderately and expect the service to be unavailable at times.
 
-### Example Usage:
+#### Example Usage:
 
 ```javascript
 // Import the id-doc-validator library
@@ -226,6 +230,44 @@ if (isValid) {
   if (userError === "INVALID") console.log("The VAT number is not valid.");
   else console.log("There was an error validating the VAT number.");
 }
+```
+
+### `supportedIdDocsByCountry`
+
+To get a list of supported identification documents for a country, use the `supportedIdDocsByCountry` function. It takes one parameter:
+
+- `country` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
+
+It returns an array of strings with the supported identification documents for the country.
+
+#### Example Usage:
+
+```javascript
+// Import the id-doc-validator library
+const { supportedIdDocsByCountry } = require("id-doc-validator");
+
+const country = "ES"; // Country code
+
+const supportedIdDocs = supportedIdDocsByCountry(country);
+
+console.log(supportedIdDocs);
+```
+
+### `supportedCountries`
+
+To get a list of supported countries, use the `supportedCountries` function. It takes no parameters.
+
+It returns an array of strings with the supported countries.
+
+#### Example Usage:
+
+```javascript
+// Import the id-doc-validator library
+const { supportedCountries } = require("id-doc-validator");
+
+const supportedCountries = supportedCountries();
+
+console.log(supportedCountries);
 ```
 
 ## Resources

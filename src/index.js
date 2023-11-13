@@ -95,7 +95,7 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   country = country.toUpperCase();
   idDocType = idDocType.toLowerCase();
 
-  if (!supportedCountries.includes(country)) {
+  if (!supportedCountries().includes(country)) {
     return false;
   }
 
@@ -140,6 +140,14 @@ const isValidEUVat = async (vatNumber, countryCode) => {
       vatNumber,
     };
   }
+};
+
+const supportedIdDocsByCountry = (country) => {
+  if (!supportedCountries().includes(country)) {
+    return [];
+  }
+
+  return Object.keys(supportedIdDocTypes[country]);
 };
 
 const supportedIdDocTypes = {
@@ -225,9 +233,11 @@ const supportedIdDocTypes = {
   },
 };
 
-const supportedCountries = Object.keys(supportedIdDocTypes);
+const supportedCountries = () => Object.keys(supportedIdDocTypes);
 
 module.exports = {
   isValidEUVat,
   isValidIdDoc,
+  supportedCountries,
+  supportedIdDocsByCountry,
 };

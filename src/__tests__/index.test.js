@@ -1,4 +1,9 @@
-const { isValidIdDoc, isValidEUVat } = require("..");
+const {
+  isValidIdDoc,
+  isValidEUVat,
+  supportedCountries,
+  supportedIdDocsByCountry,
+} = require("..");
 
 describe("isValidIdDoc", () => {
   it("should return false for missing parameters", () => {
@@ -239,4 +244,21 @@ describe("isValidEUVat", () => {
     const { isValid } = await isValidEUVat("W018408", "ES");
     expect(isValid).toBe(false);
   }, 30000);
+});
+
+describe("supportedCountries", () => {
+  it("should return an array of strings with the supported countries", () => {
+    expect(Array.isArray(supportedCountries())).toBe(true);
+    expect(supportedCountries()).toContain("ES");
+    expect(supportedCountries()).toContain("FR");
+  });
+});
+
+describe("supportedIdDocsByCountry", () => {
+  it("should return an array of supported id docs for a country", () => {
+    expect(Array.isArray(supportedIdDocsByCountry("ES"))).toBe(true);
+    expect(supportedIdDocsByCountry("ES")).toContain("dni");
+    expect(supportedIdDocsByCountry("ES")).toContain("nie");
+    expect(supportedIdDocsByCountry("ES")).toContain("passport");
+  });
 });
