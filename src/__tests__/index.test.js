@@ -1,8 +1,9 @@
 const {
   isValidIdDoc,
-  isValidEUVat,
   supportedCountries,
   supportedIdDocsByCountry,
+  isValidViesVat,
+  isValidVat,
 } = require("..");
 
 describe("isValidIdDoc", () => {
@@ -48,10 +49,6 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("c123CFG45", "DE", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from DE", () => {
-    expect(isValidIdDoc("DE12345678901", "DE", "vat")).toBe(true);
-  });
-
   it("should return true for a valid dni from ES", () => {
     expect(isValidIdDoc("47008288Z", "ES", "dni")).toBe(true);
   });
@@ -64,10 +61,6 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("paa333388", "ES", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from ES", () => {
-    expect(isValidIdDoc("ES47008288Z", "ES", "vat")).toBe(true);
-  });
-
   it("should return true for a valid cni from FR", () => {
     expect(isValidIdDoc("123456789012", "FR", "cni")).toBe(true);
   });
@@ -76,20 +69,12 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("12AB34567", "FR", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from FR", () => {
-    expect(isValidIdDoc("FR12345678901", "FR", "vat")).toBe(true);
-  });
-
   it("should return true for a valid cf from IT", () => {
     expect(isValidIdDoc("SCRGZL98R27H501I", "IT", "cf")).toBe(true);
   });
 
   it("should return true for a valid passport from IT", () => {
     expect(isValidIdDoc("AA1234567", "IT", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from IT", () => {
-    expect(isValidIdDoc("IT07643520567", "IT", "vat")).toBe(true);
   });
 
   it("should return true for a valid cc from PT", () => {
@@ -104,118 +89,85 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("P123456", "PT", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from PT", () => {
-    expect(isValidIdDoc("PT123456789", "PT", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from AT", () => {
     expect(isValidIdDoc("A1234567", "AT", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from AT", () => {
-    expect(isValidIdDoc("ATU12345678", "AT", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from BE", () => {
     expect(isValidIdDoc("KK1234567", "BE", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from BE", () => {
-    expect(isValidIdDoc("BE0123456789", "BE", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from BG", () => {
     expect(isValidIdDoc("123456789", "BG", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from BG", () => {
-    expect(isValidIdDoc("BG1234567890", "BG", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from HR", () => {
     expect(isValidIdDoc("123456789", "HR", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from HR", () => {
-    expect(isValidIdDoc("HR12345678901", "HR", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from CY", () => {
     expect(isValidIdDoc("A1234567", "CY", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from CY", () => {
-    expect(isValidIdDoc("CY12345678A", "CY", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from CZ", () => {
     expect(isValidIdDoc("12345678", "CZ", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from CZ", () => {
-    expect(isValidIdDoc("CZ123456789", "CZ", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from DK", () => {
     expect(isValidIdDoc("123456789", "DK", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from DK", () => {
-    expect(isValidIdDoc("DK12345678", "DK", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from EE", () => {
     expect(isValidIdDoc("AA1234567", "EE", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from EE", () => {
-    expect(isValidIdDoc("EE123456789", "EE", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from FI", () => {
     expect(isValidIdDoc("AA1234567", "FI", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from FI", () => {
-    expect(isValidIdDoc("FI12345672", "FI", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from GR", () => {
     expect(isValidIdDoc("AA1234567", "GR", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from GR", () => {
-    expect(isValidIdDoc("EL123456789", "GR", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from HU", () => {
     expect(isValidIdDoc("AB123456", "HU", "passport")).toBe(true);
-  });
-
-  it("should return true for a valid vat from HU", () => {
-    expect(isValidIdDoc("HU12345678", "HU", "vat")).toBe(true);
   });
 
   it("should return true for a valid passport from IE", () => {
     expect(isValidIdDoc("PA1234567", "IE", "passport")).toBe(true);
   });
 
-  it("should return true for a valid vat from IE", () => {
-    expect(isValidIdDoc("IE1234567AB", "IE", "vat")).toBe(true);
-  });
-
   it("should return true for a valid passport from LV", () => {
     expect(isValidIdDoc("AA1234567", "LV", "passport")).toBe(true);
   });
+});
 
-  it("should return true for a valid vat from LV", () => {
-    expect(isValidIdDoc("LV12345678901", "LV", "vat")).toBe(true);
+describe("isValidVat", () => {
+  it("should return true for a valid VAT from a supported country", () => {
+    expect(isValidVat("ATU12345678")).toBe(true);
+    expect(isValidVat("BE03-1234-1234")).toBe(true);
+    expect(isValidVat("BG123456789")).toBe(true);
+    expect(isValidVat("CY12345678Z")).toBe(true);
+    expect(isValidVat("CZ12345678")).toBe(true);
+    expect(isValidVat("DE12345678901")).toBe(true);
+    expect(isValidVat("DK12345678")).toBe(true);
+    expect(isValidVat("EE123456789")).toBe(true);
+    expect(isValidVat("EL123456789")).toBe(true);
+    expect(isValidVat("ES47008288Z")).toBe(true);
+    expect(isValidVat("FI12345672")).toBe(true);
+    expect(isValidVat("FR12345678901")).toBe(true);
+    expect(isValidVat("HR12345678901")).toBe(true);
+    expect(isValidVat("HU12345678")).toBe(true);
+    expect(isValidVat("IE1234567X")).toBe(true);
+    expect(isValidVat("IT.07643520567")).toBe(true);
+    expect(isValidVat("LV12345678901")).toBe(true);
+    expect(isValidVat("PT123456789")).toBe(true);
   });
 });
 
-describe("isValidEUVat", () => {
+describe("isValidViesVat", () => {
   it("should return an object with isValid true if the request didn't fail for a valid VAT", async () => {
-    const { isValid, userError, vatNumber } = await isValidEUVat(
+    const { isValid, userError, vatNumber } = await isValidViesVat(
       "W0184081H",
       "ES"
     );
@@ -228,7 +180,7 @@ describe("isValidEUVat", () => {
   }, 30000);
 
   it("should return an object with isValid true if the request didn't fail for a valid VAT with country code", async () => {
-    const { isValid, userError, vatNumber } = await isValidEUVat(
+    const { isValid, userError, vatNumber } = await isValidViesVat(
       "ESW0184081H",
       "ES"
     );
@@ -241,7 +193,7 @@ describe("isValidEUVat", () => {
   }, 30000);
 
   it("should return an object with isValid false for an invalid VAT", async () => {
-    const { isValid } = await isValidEUVat("W018408", "ES");
+    const { isValid } = await isValidViesVat("W018408", "ES");
     expect(isValid).toBe(false);
   }, 30000);
 });

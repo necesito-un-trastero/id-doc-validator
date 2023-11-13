@@ -118,7 +118,21 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   }
 };
 
-const isValidEUVat = async (vatNumber, countryCode) => {
+const isValidVat = (vatNumber) => {
+  if (!vatNumber || typeof vatNumber !== "string") {
+    return false;
+  }
+
+  const vatCountryCode = vatNumber.slice(0, 2).toUpperCase();
+
+  if (!supportedCountriesVat().includes(vatCountryCode)) {
+    return false;
+  }
+
+  return supportedCountriesVatMap[vatCountryCode](vatNumber);
+};
+
+const isValidViesVat = async (vatNumber, countryCode) => {
   const viesApiEndpoint =
     "https://ec.europa.eu/taxation_customs/vies/rest-api/ms/" +
     countryCode +
@@ -153,91 +167,98 @@ const supportedIdDocsByCountry = (country) => {
 const supportedIdDocTypes = {
   AT: {
     passport: validatePassportAT,
-    vat: validateVatAT,
   },
   BE: {
     passport: validatePassportBE,
-    vat: validateVatBE,
   },
   BG: {
     passport: validatePassportBG,
-    vat: validateVatBG,
   },
   CY: {
     passport: validatePassportCY,
-    vat: validateVatCY,
   },
   CZ: {
     passport: validatePassportCZ,
-    vat: validateVatCZ,
   },
   DE: {
     gic: validateGicDE,
     passport: validatePassportDE,
-    vat: validateVatDE,
   },
   DK: {
     passport: validatePassportDK,
-    vat: validateVatDK,
   },
   EE: {
     passport: validatePassportEE,
-    vat: validateVatEE,
   },
   ES: {
     dni: validateNifES,
     nif: validateNifES,
     nie: validateNieES,
     passport: validatePassportES,
-    vat: validateVatES,
   },
   FI: {
     passport: validatePassportFI,
-    vat: validateVatFI,
   },
   FR: {
     cni: validateCniFR,
     passport: validatePassportFR,
-    vat: validateVatFR,
   },
   GR: {
     passport: validatePassportGR,
-    vat: validateVatGR,
   },
   HR: {
     passport: validatePassportHR,
-    vat: validateVatHR,
   },
   HU: {
     passport: validatePassportHU,
-    vat: validateVatHU,
   },
   IE: {
     passport: validatePassportIE,
-    vat: validateVatIE,
   },
   IT: {
     cf: validateCfIT,
     passport: validatePassportIT,
-    vat: validateVatIT,
   },
   LV: {
     passport: validatePassportLV,
-    vat: validateVatLV,
   },
   PT: {
     cc: validateCcPT,
     nif: validateNifPT,
     passport: validatePassportPT,
-    vat: validateVatPT,
   },
+};
+
+const supportedCountriesVatMap = {
+  AT: validateVatAT,
+  BE: validateVatBE,
+  BG: validateVatBG,
+  CY: validateVatCY,
+  CZ: validateVatCZ,
+  DE: validateVatDE,
+  DK: validateVatDK,
+  EE: validateVatEE,
+  ES: validateVatES,
+  FI: validateVatFI,
+  FR: validateVatFR,
+  EL: validateVatGR,
+  HR: validateVatHR,
+  HU: validateVatHU,
+  IE: validateVatIE,
+  IT: validateVatIT,
+  LV: validateVatLV,
+  PT: validateVatPT,
 };
 
 const supportedCountries = () => Object.keys(supportedIdDocTypes);
 
+const supportedCountriesVat = () => Object.keys(supportedCountriesVatMap);
+
 module.exports = {
-  isValidEUVat,
+  isValidVat,
+  isValidViesVat,
   isValidIdDoc,
   supportedCountries,
   supportedIdDocsByCountry,
+  supportedCountriesVat,
 };
