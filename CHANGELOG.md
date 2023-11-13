@@ -9,16 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-### Fixed
-
 - Add `isValidVat` and `supportedCountriesVat` functions.
+
+### Fixed
 
 ### Changed
 
 - Change `isValidEUVat` to `isValidViesVat`
 - Remove "vat" as an id doc type for `isValidIdDoc` function.
+- Updated README.md to include information about the new functions.
 
 ### Removed
+
+- Removed examples from README.md.
 
 ## [0.5.6] - 2023-11-13
 
