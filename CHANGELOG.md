@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed error in README.md in `supportedCountriesVat` function.
+
 ### Changed
 
 - Change `supportedCountries` to `supportedCountriesIdDoc`.

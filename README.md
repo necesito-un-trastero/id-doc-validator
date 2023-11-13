@@ -215,7 +215,7 @@ It returns an array of strings with the supported countries.
 
 To get a list of supported countries for VAT validation, use the `supportedCountriesVat` function. It takes no parameters.
 
-It returns an array of strings with the supported alpha-2 country codes for VAT validation.
+It returns an array of strings with the supported VAT country codes for VAT validation.
 
 ## Resources
 
