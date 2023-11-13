@@ -5,15 +5,228 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-## [0.4.1] - 2023-11-02
+## [0.5.7] - 2023-11-13
 
 ### Added
 
 ### Fixed
 
+- Add `isValidVat` and `supportedCountriesVat` functions.
+
 ### Changed
+
+- Change `isValidEUVat` to `isValidViesVat`
+- Remove "vat" as an id doc type for `isValidIdDoc` function.
+
+### Removed
+
+## [0.5.6] - 2023-11-13
+
+### Added
+
+### Fixed
+
+- Add `supportedCountries` and `supportedIdDocsByCountry` functions.
+
+### Changed
+
+- Updated README.md to include information about the new functions.
+
+### Removed
+
+## [0.5.5] - 2023-11-09
+
+### Added
+
+### Fixed
+
+- Fixed main entry point in package.json.
+
+### Changed
+
+### Removed
+
+## [0.5.3] - 2023-11-09
+
+### Added
+
+- Added support for VAT and passport number for the following country: Latvia.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.5.2] - 2023-11-09
+
+### Added
+
+- Added support for VAT and passport number for the following country: Ireland.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.5.1] - 2023-11-09
+
+### Added
+
+- Added support for VAT and passport number for the following country: Hungary.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.5.0] - 2023-11-08
+
+### Added
+
+- Added support for VAT and passport number for the following country: Greece.
+- Added a new function to check the validity of VAT numbers for EU countries using the VIES API: `isValidEUVat`.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+- Updated README.md with new function `isValidEUVat`.
+
+### Removed
+
+## [0.4.9] - 2023-11-08
+
+### Added
+
+- Added support for VAT (with checksum validation) and passport number for the following country: Finland.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.8] - 2023-11-08
+
+### Added
+
+- Added support for VAT and passport number for the following country: Estonia.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.7] - 2023-11-08
+
+### Added
+
+- Added support for VAT and passport number for the following country: Denmark.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.6] - 2023-11-08
+
+### Added
+
+- Added support for VAT and passport number for the following country: Czech Republic.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.5] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Republic of Cyprus.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.4] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Croatia.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.3] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Bulgaria.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.2] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Belgium.
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
+
+### Removed
+
+## [0.4.1] - 2023-11-07
+
+### Added
+
+- Added support for VAT and passport number for the following country: Austria
+
+### Fixed
+
+### Changed
+
+- Updated README.md with new supported countries and identification document types.
 
 ### Removed
 
