@@ -95,7 +95,7 @@ const isValidIdDoc = (idDoc, country, idDocType = "") => {
   country = country.toUpperCase();
   idDocType = idDocType.toLowerCase();
 
-  if (!supportedCountries().includes(country)) {
+  if (!supportedCountriesIdDoc().includes(country)) {
     return false;
   }
 
@@ -157,7 +157,7 @@ const isValidViesVat = async (vatNumber, countryCode) => {
 };
 
 const supportedIdDocsByCountry = (country) => {
-  if (!supportedCountries().includes(country)) {
+  if (!supportedCountriesIdDoc().includes(country)) {
     return [];
   }
 
@@ -250,7 +250,7 @@ const supportedCountriesVatMap = {
   PT: validateVatPT,
 };
 
-const supportedCountries = () => Object.keys(supportedIdDocTypes);
+const supportedCountriesIdDoc = () => Object.keys(supportedIdDocTypes);
 
 const supportedCountriesVat = () => Object.keys(supportedCountriesVatMap);
 
@@ -258,7 +258,7 @@ module.exports = {
   isValidVat,
   isValidViesVat,
   isValidIdDoc,
-  supportedCountries,
+  supportedCountriesIdDoc,
   supportedIdDocsByCountry,
   supportedCountriesVat,
 };

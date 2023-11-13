@@ -205,9 +205,9 @@ To get a list of supported identification documents for a country, use the `supp
 
 It returns an array of strings with the supported identification documents for the country.
 
-### `supportedCountries`
+### `supportedCountriesIdDoc`
 
-To get a list of supported countries, use the `supportedCountries` function. It takes no parameters.
+To get a list of supported countries for identification documents (not VAT), use the `supportedCountriesIdDoc` function. It takes no parameters.
 
 It returns an array of strings with the supported countries.
 

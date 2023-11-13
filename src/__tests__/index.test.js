@@ -1,9 +1,10 @@
 const {
   isValidIdDoc,
-  supportedCountries,
   supportedIdDocsByCountry,
   isValidViesVat,
   isValidVat,
+  supportedCountriesIdDoc,
+  supportedCountriesVat,
 } = require("..");
 
 describe("isValidIdDoc", () => {
@@ -200,9 +201,17 @@ describe("isValidViesVat", () => {
 
 describe("supportedCountries", () => {
   it("should return an array of strings with the supported countries", () => {
-    expect(Array.isArray(supportedCountries())).toBe(true);
-    expect(supportedCountries()).toContain("ES");
-    expect(supportedCountries()).toContain("FR");
+    expect(Array.isArray(supportedCountriesIdDoc())).toBe(true);
+    expect(supportedCountriesIdDoc()).toContain("ES");
+    expect(supportedCountriesIdDoc()).toContain("FR");
+  });
+});
+
+describe("supportedCountriesVat", () => {
+  it("should return an array of strings with the supported countries", () => {
+    expect(Array.isArray(supportedCountriesVat())).toBe(true);
+    expect(supportedCountriesVat()).toContain("ES");
+    expect(supportedCountriesVat()).toContain("FR");
   });
 });
 
