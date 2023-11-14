@@ -1,7 +1,7 @@
 const { testStringAgainstRegex } = require("../utils");
 
 /**
- * Validates a Spanish Número de Identificación Fiscal (NIF) number.
+ * Validates a Spanish Número de Identificación Fiscal (NIF) number for individuals and companies.
  *
  * @param {string} nif - The NIF number to validate.
  * @returns {boolean} - Returns true if the NIF is valid, false otherwise.
@@ -12,10 +12,15 @@ const { testStringAgainstRegex } = require("../utils");
  * - The algorithm ensures that the NIF number is correctly formatted and that the checksum is valid.
  */
 const validateNifES = (nif) => {
-  const nifPattern = /^\d{8}[A-Z]$/;
-  if (!testStringAgainstRegex(nif, nifPattern)) return false;
+  const personalNifPattern = /^\d{8}[A-Z]$/;
+  const companyNifPattern = /^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-Z]$/;
 
-  if (!validateModulo23AlgorithmChecksum(nif)) return false;
+  const isPersonalNif = testStringAgainstRegex(nif, personalNifPattern);
+  const isCompanyNif = testStringAgainstRegex(nif, companyNifPattern);
+  if (!isPersonalNif && !isCompanyNif) return false;
+
+  if (isPersonalNif && !validateModulo23AlgorithmChecksum(nif)) return false;
+  if (isCompanyNif && !validateCompanyNifControl(nif)) return false;
 
   return true;
 };
@@ -115,6 +120,54 @@ const validateModulo23AlgorithmChecksum = (idDoc) => {
   if (providedControlLetter !== expectedControlLetter) return false;
 
   return true;
+};
+
+/**
+ * Validates the control letter of a Spanish company's NIF (Número de Identificación Fiscal), previously CIF.
+ *
+ * @param {string} nif - The NIF to be validated.
+ * @returns {boolean} - True if the provided NIF has a valid control letter, false otherwise.
+ */
+const validateCompanyNifControl = (nif) => {
+  const isControlLetter = ["N", "P", "Q", "R", "S", "W"].includes(
+    nif.slice(0, 1)
+  );
+  const centralDigits = nif.slice(1, -1);
+
+  const providedControl = nif.slice(-1);
+
+  // Add the digits of pairs
+  let sum = 0;
+
+  for (let i = 1; i < centralDigits.length; i += 2) {
+    const digit = parseInt(centralDigits[i], 10);
+    sum += digit;
+  }
+
+  // Add the digits of odd positions, multiplied by 2
+  for (let i = 0; i < centralDigits.length; i += 2) {
+    const digit = parseInt(centralDigits[i], 10) * 2;
+    sum += digit;
+  }
+
+  // Take the units digit of the sum
+  const unitsDigit = sum % 10;
+
+  let expectedControl = unitsDigit;
+
+  if (isControlLetter) {
+    const controlLetter = "JABCDEFGHI".charAt(unitsDigit);
+
+    if (unitsDigit === 10) controlLetter = "J";
+
+    expectedControl = controlLetter;
+  }
+
+  if (typeof expectedControl === "number") {
+    expectedControl = expectedControl.toString();
+  }
+
+  return providedControl === expectedControl;
 };
 
 module.exports = {

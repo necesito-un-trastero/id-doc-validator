@@ -6,13 +6,19 @@ const {
 } = require("../../country_validations/es");
 
 describe("validateNifES", () => {
-  it("should return true for valid DNI", () => {
+  it("should return true for valid personal DNI/NIF", () => {
     expect(validateNifES("92400040R")).toBe(true);
     expect(validateNifES("47008288z")).toBe(true);
     expect(validateNifES("01899814Z")).toBe(true);
   });
 
-  it("should return false for invalid DNI", () => {
+  it("should return true for a valid company NIF", () => {
+    expect(validateNifES("B62922604")).toBe(true);
+    expect(validateNifES("S0602053I")).toBe(true);
+    expect(validateNifES("E07567982")).toBe(true);
+  });
+
+  it("should return false for invalid DNI/NIF", () => {
     expect(validateNifES("1234")).toBe(false);
     expect(validateNifES("12345678")).toBe(false);
     expect(validateNifES("12345678X1")).toBe(false);
@@ -22,6 +28,9 @@ describe("validateNifES", () => {
   it("should return false for invalid checksum", () => {
     expect(validateNifES("47008288a")).toBe(false);
     expect(validateNifES("92400040A")).toBe(false);
+    expect(validateNifES("B62922601")).toBe(false);
+    expect(validateNifES("S0602053A")).toBe(false);
+    expect(validateNifES("E07567989")).toBe(false);
   });
 });
 
