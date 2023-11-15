@@ -154,14 +154,14 @@ const validateCompanyNifControl = (nif) => {
   }
 
   // Take the units digit of the sum
-  const unitsDigit = 10 - (sum % 10);
+  let unitsDigit = 10 - (sum % 10);
+
+  if (unitsDigit === 10) unitsDigit = 0;
 
   let expectedControl = unitsDigit;
 
   if (isControlLetter) {
     const controlLetter = "JABCDEFGHI".charAt(unitsDigit);
-
-    if (unitsDigit === 10) controlLetter = "J";
 
     expectedControl = controlLetter;
   }

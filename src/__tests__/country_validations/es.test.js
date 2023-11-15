@@ -17,6 +17,7 @@ describe("validateNifES", () => {
     expect(validateNifES("P0313300F")).toBe(true);
     expect(validateNifES("B23260466")).toBe(true);
     expect(validateNifES("S0602053A")).toBe(true);
+    expect(validateNifES("B18927350")).toBe(true);
   });
 
   it("should return false for invalid DNI/NIF", () => {
