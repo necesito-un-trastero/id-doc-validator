@@ -13,9 +13,10 @@ describe("validateNifES", () => {
   });
 
   it("should return true for a valid company NIF", () => {
-    expect(validateNifES("B62922604")).toBe(true);
-    expect(validateNifES("S0602053I")).toBe(true);
-    expect(validateNifES("E07567982")).toBe(true);
+    expect(validateNifES("A58818501")).toBe(true);
+    expect(validateNifES("P0313300F")).toBe(true);
+    expect(validateNifES("B23260466")).toBe(true);
+    expect(validateNifES("S0602053A")).toBe(true);
   });
 
   it("should return false for invalid DNI/NIF", () => {
@@ -29,7 +30,6 @@ describe("validateNifES", () => {
     expect(validateNifES("47008288a")).toBe(false);
     expect(validateNifES("92400040A")).toBe(false);
     expect(validateNifES("B62922601")).toBe(false);
-    expect(validateNifES("S0602053A")).toBe(false);
     expect(validateNifES("E07567989")).toBe(false);
   });
 });
@@ -81,6 +81,12 @@ describe("validateVatES", () => {
     expect(validateVatES("ES47008288Z")).toBe(true);
     expect(validateVatES("ES92400040R")).toBe(true);
     expect(validateVatES("ES01899814Z")).toBe(true);
+    expect(validateVatES("ES01931312W")).toBe(true);
+    expect(validateVatES("ESB19662295")).toBe(true);
+    expect(validateVatES("ESA58818501")).toBe(true);
+    expect(validateVatES("ESB66446931")).toBe(true);
+    expect(validateVatES("ESB64052392")).toBe(true);
+    expect(validateVatES("ES08848552S")).toBe(true);
   });
 
   it("should return false for invalid VAT", () => {

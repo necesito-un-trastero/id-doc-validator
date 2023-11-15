@@ -146,12 +146,15 @@ const validateCompanyNifControl = (nif) => {
 
   // Add the digits of odd positions, multiplied by 2
   for (let i = 0; i < centralDigits.length; i += 2) {
-    const digit = parseInt(centralDigits[i], 10) * 2;
-    sum += digit;
+    const digit = (parseInt(centralDigits[i], 10) * 2).toString();
+    const digitSum = digit
+      .split("")
+      .reduce((acc, curr) => acc + parseInt(curr, 10), 0);
+    sum += digitSum;
   }
 
   // Take the units digit of the sum
-  const unitsDigit = sum % 10;
+  const unitsDigit = 10 - (sum % 10);
 
   let expectedControl = unitsDigit;
 
