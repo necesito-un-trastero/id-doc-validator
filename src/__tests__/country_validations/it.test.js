@@ -54,6 +54,7 @@ describe("validateVatIT", () => {
     expect(validateVatIT("IT.07643520567")).toBe(true);
     expect(validateVatIT("IT-07643520567")).toBe(true);
     expect(validateVatIT("IT,07643520567")).toBe(true);
+    expect(validateVatIT("IT12133290960")).toBe(true);
   });
 
   it("should return false for an invalid VAT", () => {

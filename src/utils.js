@@ -62,7 +62,9 @@ const isValidLuhn = (inputString) => {
     checksum += digit;
   }
 
-  const expectedCheckDigit = 10 - (checksum % 10);
+  let expectedCheckDigit = 10 - (checksum % 10);
+
+  if (expectedCheckDigit === 10) expectedCheckDigit = 0;
 
   return providedLuhnCheckDigit === expectedCheckDigit;
 };
