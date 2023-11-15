@@ -45,7 +45,7 @@ const validatePassportDE = (passport) => {
  * @todo - Implement the checksum validation.
  */
 const validateVatDE = (vat) => {
-  const vatPattern = /^DE\d{11}$/;
+  const vatPattern = /^DE\d{9}$/;
   if (!testStringAgainstRegex(vat, vatPattern)) return false;
 
   return true;

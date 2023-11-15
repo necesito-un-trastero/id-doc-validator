@@ -45,11 +45,11 @@ describe("validatePassportDE", () => {
 
 describe("validateVatDE", () => {
   it("should return true for a valid VAT", () => {
-    expect(validateVatDE("DE12345678901")).toBe(true);
+    expect(validateVatDE("DE123456789")).toBe(true);
   });
 
   it("should return false for an invalid VAT", () => {
-    expect(validateVatDE("12345678901")).toBe(false);
+    expect(validateVatDE("1234567890")).toBe(false);
     expect(validateVatDE("DE1234567890")).toBe(false);
     expect(validateVatDE("DE123456789012")).toBe(false);
   });
