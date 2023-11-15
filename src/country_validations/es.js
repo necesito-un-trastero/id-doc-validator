@@ -85,8 +85,9 @@ const validateVatES = (vat) => {
   // Check if the VAT number starts with ES
   if (vat.slice(0, 2) !== "ES") return false;
 
-  // Check if the VAT number (without starting ES) is a valid NIF
-  if (!validateNifES(vat.slice(2))) return false;
+  // Check if the VAT number (without starting ES) is a valid NIF or NIE
+  if (!validateNifES(vat.slice(2)) && !validateNieES(vat.slice(2)))
+    return false;
 
   return true;
 };

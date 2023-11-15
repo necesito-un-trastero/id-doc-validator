@@ -88,6 +88,8 @@ describe("validateVatES", () => {
     expect(validateVatES("ESB66446931")).toBe(true);
     expect(validateVatES("ESB64052392")).toBe(true);
     expect(validateVatES("ES08848552S")).toBe(true);
+    expect(validateVatES("ESY9334449M")).toBe(true);
+    expect(validateVatES("ESX6169075S")).toBe(true);
   });
 
   it("should return false for invalid VAT", () => {
