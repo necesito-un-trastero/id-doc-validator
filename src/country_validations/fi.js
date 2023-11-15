@@ -13,25 +13,28 @@ const validateVatFI = (vat) => {
 
   if (!testStringAgainstRegex(vat, vatPattern)) return false;
 
-  if (!validateWeightedChecksum(vat)) return false;
+  const vatWithoutChecksum = vat.slice(2);
+  if (!validateWeightedChecksum(vatWithoutChecksum)) return false;
 
   return true;
 };
 
-const validateWeightedChecksum = (vat) => {
-  const vatWithoutCountryCode = vat.slice(2);
-  const vatWithoutChecksum = vatWithoutCountryCode.slice(0, -1);
-  const providedChecksum = Number(vatWithoutCountryCode.slice(-1));
+const validateWeightedChecksum = (inputString) => {
+  const providedChecksum = Number(inputString.slice(-1));
 
-  const weights = [7, 3, 1, 7, 3, 1, 7];
+  inputString = inputString.slice(0, -1);
 
-  const digits = vatWithoutChecksum.split("").reverse().map(Number);
+  const weights = [2, 4, 8, 5, 10, 9, 7];
+
+  const digits = inputString.split("").reverse().map(Number);
 
   const sum = digits.reduce((acc, digit, index) => {
     return acc + digit * weights[index];
   }, 0);
 
-  const expectedChecksum = (10 - (sum % 10)) % 10;
+  let expectedChecksum = 11 - (sum % 11);
+
+  if (expectedChecksum > 9) expectedChecksum = 0;
 
   return providedChecksum === expectedChecksum;
 };

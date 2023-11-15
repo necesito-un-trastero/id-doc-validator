@@ -26,8 +26,7 @@ describe("validateVatFI", () => {
   });
 
   it("should return true for a valid VAT", () => {
-    expect(validateVatFI("FI12345672")).toBe(true);
-    expect(validateVatFI("FI98765438")).toBe(true);
+    expect(validateVatFI("FI19254537")).toBe(true);
   });
 
   it("should return true for a VAT with invalid checksum", () => {

@@ -69,6 +69,27 @@ const isValidLuhn = (inputString) => {
   return providedLuhnCheckDigit === expectedCheckDigit;
 };
 
+const isValidMod11_2 = (inputString) => {
+  const providedCheckDigit = inputString.slice(-1);
+
+  inputString = inputString.slice(0, -1);
+
+  const weights = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+  const reverseDigitMap = inputString.split("").reverse().map(Number);
+
+  const sum = reverseDigitMap.reduce((acc, digit, index) => {
+    return acc + digit * weights[index];
+  }, 0);
+
+  let expectedCheckDigit = 11 - (sum % 11);
+
+  if (expectedCheckDigit === 10) expectedCheckDigit = "X";
+  else if (expectedCheckDigit === 11) expectedCheckDigit = 0;
+
+  return providedCheckDigit === expectedCheckDigit.toString();
+};
+
 /**
  * Converts a character to its numeric equivalent based on its ASCII value.
  *
@@ -88,5 +109,6 @@ const getNumberFromChar = (value) => {
 module.exports = {
   getNumberFromChar,
   isValidLuhn,
+  isValidMod11_2,
   testStringAgainstRegex,
 };
