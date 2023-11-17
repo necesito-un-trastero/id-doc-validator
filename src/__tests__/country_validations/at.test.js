@@ -1,24 +1,4 @@
-const {
-  validatePassportAT,
-  validateVatAT,
-} = require("../../country_validations/at");
-
-describe("validatePassportAT", () => {
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportAT("1234")).toBe(false);
-    expect(validatePassportAT("A123456")).toBe(false);
-    expect(validatePassportAT("A 123456")).toBe(false);
-    expect(validatePassportAT("A12345678")).toBe(false);
-    expect(validatePassportAT("A 12345678")).toBe(false);
-    expect(validatePassportAT("A-1234567")).toBe(false);
-  });
-
-  it("should return true for a valid passport", () => {
-    expect(validatePassportAT("A1234567")).toBe(true);
-    expect(validatePassportAT("A 1234567")).toBe(true);
-    expect(validatePassportAT("b 8767823")).toBe(true);
-  });
-});
+const { validateVatAT } = require("../../country_validations/at");
 
 describe("validateVatAT", () => {
   it("should return false for an invalid VAT", () => {

@@ -1,7 +1,6 @@
 const {
   validateGicDE,
   validateVatDE,
-  validatePassportDE,
 } = require("../../country_validations/de");
 
 describe("validateGicDE", () => {
@@ -22,24 +21,6 @@ describe("validateGicDE", () => {
     expect(validateGicDE("l1234123456")).toBe(false);
     expect(validateGicDE("l123412345de")).toBe(false);
     expect(validateGicDE("l-123412345")).toBe(false);
-  });
-});
-
-describe("validatePassportDE", () => {
-  it("should return true for a valid passport", () => {
-    expect(validatePassportDE("c123CFG45")).toBe(true);
-    expect(validatePassportDE("c123CFG454")).toBe(true);
-    expect(validatePassportDE("c123CFG454d")).toBe(true);
-    expect(validatePassportDE("h01234567")).toBe(true);
-  });
-
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportDE("c123CFG4")).toBe(false);
-    expect(validatePassportDE("c123CFG4567")).toBe(false);
-    expect(validatePassportDE("c123CFG456de")).toBe(false);
-    expect(validatePassportDE("c-123CFG456")).toBe(false);
-    expect(validatePassportDE("Z12341234")).toBe(false);
-    expect(validatePassportDE("H0123U123")).toBe(false);
   });
 });
 

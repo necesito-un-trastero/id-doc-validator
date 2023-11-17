@@ -24,20 +24,6 @@ const validateGicDE = (gic) => {
 };
 
 /**
- * Validates a German passport number.
- *
- * @param {string} passport - The German passport number to validate.
- * @returns {boolean} - Returns true if the passport is valid, false otherwise.
- * @todo - Implement the checksum validation.
- */
-const validatePassportDE = (passport) => {
-  const passportPattern = /^[CFGHJK][CFGHJKLMNPRTVWXYZ0-9]{8}\d?D?$/;
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-
-  return true;
-};
-
-/**
  * Validates a German Value Added Tax (VAT) number.
  *
  * @param {string} vat - The German VAT number to validate.
@@ -53,6 +39,5 @@ const validateVatDE = (vat) => {
 
 module.exports = {
   validateGicDE,
-  validatePassportDE,
   validateVatDE,
 };

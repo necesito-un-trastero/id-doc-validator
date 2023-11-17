@@ -141,6 +141,42 @@ describe("isValidIdDoc", () => {
   it("should return true for a valid passport from LV", () => {
     expect(isValidIdDoc("AA1234567", "LV", "passport")).toBe(true);
   });
+
+  it("should return true for a valid passport from LT", () => {
+    expect(isValidIdDoc("12345678", "LT", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from LU", () => {
+    expect(isValidIdDoc("1A2B3C4D", "LU", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from MT", () => {
+    expect(isValidIdDoc("1234567", "MT", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from NL", () => {
+    expect(isValidIdDoc("AA12VV3B7", "NL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from PL", () => {
+    expect(isValidIdDoc("AA1234567", "PL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from RO", () => {
+    expect(isValidIdDoc("12345678", "RO", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SK", () => {
+    expect(isValidIdDoc("A1234567", "SK", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SL", () => {
+    expect(isValidIdDoc("PA1234567", "SL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SE", () => {
+    expect(isValidIdDoc("12345678", "SE", "passport")).toBe(true);
+  });
 });
 
 describe("isValidVat", () => {
@@ -163,6 +199,15 @@ describe("isValidVat", () => {
     expect(isValidVat("IT.07643520567")).toBe(true);
     expect(isValidVat("LV12345678901")).toBe(true);
     expect(isValidVat("PT123456789")).toBe(true);
+    expect(isValidVat("LT123456789")).toBe(true);
+    expect(isValidVat("LU12345678")).toBe(true);
+    expect(isValidVat("MT12345678")).toBe(true);
+    expect(isValidVat("NL123456789B01")).toBe(true);
+    expect(isValidVat("PL1234567890")).toBe(true);
+    expect(isValidVat("RO123456789")).toBe(true);
+    expect(isValidVat("SE123456789012")).toBe(true);
+    expect(isValidVat("SI12345678")).toBe(true);
+    expect(isValidVat("SK1234567895")).toBe(true);
   });
 });
 

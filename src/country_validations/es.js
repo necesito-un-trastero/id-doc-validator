@@ -55,22 +55,6 @@ const validateNieES = (nie) => {
 };
 
 /**
- * Validates a Spanish passport number.
- *
- * @param {string} passport - The passport number to validate.
- * @returns {boolean} - Returns true if the passport is valid, false otherwise.
- *
- * This function checks if the provided Spanish passport number adheres to the format requirements:
- * - It must consist of 3 letters followed by 6 digits and an optional letter.
- */
-const validatePassportES = (passport) => {
-  const passportPattern = /^[A-Z]{3}\d{6}[A-Z]?$/;
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-
-  return true;
-};
-
-/**
  * Validates a Spanish Value Added Tax (VAT) number.
  *
  * @param {string} vat - The VAT number to validate.
@@ -177,6 +161,5 @@ const validateCompanyNifControl = (nif) => {
 module.exports = {
   validateNieES,
   validateNifES,
-  validatePassportES,
   validateVatES,
 };

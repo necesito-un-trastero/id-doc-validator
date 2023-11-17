@@ -1,6 +1,5 @@
 const {
   validateCniFR,
-  validatePassportFR,
   validateVatFR,
 } = require("../../country_validations/fr");
 
@@ -14,21 +13,6 @@ describe("validateCniFR", () => {
     expect(validateCniFR("1234567890123")).toBe(false);
     expect(validateCniFR("12345678901a")).toBe(false);
     expect(validateCniFR("123 456 789 012")).toBe(false);
-  });
-});
-
-describe("validatePassportFR", () => {
-  it("should return true for valid passport", () => {
-    expect(validatePassportFR("12AB34567")).toBe(true);
-  });
-
-  it("should return false for invalid passport", () => {
-    expect(validatePassportFR("12345678")).toBe(false);
-    expect(validatePassportFR("12345678X1")).toBe(false);
-    expect(validatePassportFR("12345678-X")).toBe(false);
-    expect(validatePassportFR("A3082433R")).toBe(false);
-    expect(validatePassportFR("47008288z")).toBe(false);
-    expect(validatePassportFR("Z-3082433-R")).toBe(false);
   });
 });
 

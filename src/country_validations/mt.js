@@ -1,7 +1,7 @@
 const { testStringAgainstRegex } = require("../utils");
 
-const validateVatLV = (vat) => {
-  const vatPattern = /^(LV)\d{11}$/;
+const validateVatMT = (vat) => {
+  const vatPattern = /^(MT)(\d{8})$/;
 
   if (!testStringAgainstRegex(vat, vatPattern)) return false;
 
@@ -9,5 +9,5 @@ const validateVatLV = (vat) => {
 };
 
 module.exports = {
-  validateVatLV,
+  validateVatMT,
 };

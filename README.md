@@ -90,7 +90,7 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 <summary><strong>Greece (GR)</strong></summary>
 
 - Passport
-- VAT (Value Added Tax ID)
+- VAT (Value Added Tax ID) (country code: EL)
 
 </details>
 
@@ -120,6 +120,14 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Lithuania (LT)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Latvia (LV)</strong></summary>
 
 - Passport
@@ -128,7 +136,57 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Luxembourg (LU)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Malta (MT)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Netherlands (NL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Poland (PL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Portugal (PT)</strong></summary>
+
+- CC (Cartão de Cidadão)
+- NIF (Número de Identificação Fiscal)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Republic of Cyprus (CY)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Romania (RO)</strong></summary>
 
 - Passport
 - VAT (Value Added Tax ID)
@@ -147,10 +205,24 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
-<summary><strong>Portugal (PT)</strong></summary>
+<summary><strong>Slovakia (SK)</strong></summary>
 
-- CC (Cartão de Cidadão)
-- NIF (Número de Identificação Fiscal)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Slovenia (SL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID) (country code: SI)
+
+</details>
+
+<details>
+<summary><strong>Sweden (SE)</strong></summary>
+
 - Passport
 - VAT (Value Added Tax ID)
 

@@ -1,6 +1,5 @@
 const {
   validateNifPT,
-  validatePassportPT,
   validateVatPT,
   validateCcPT,
 } = require("../../country_validations/pt");
@@ -25,21 +24,6 @@ describe("validateNifPT", () => {
     expect(validateNifPT("228272221")).toBe(false);
     expect(validateNifPT("208796305")).toBe(false);
     expect(validateNifPT("236374428")).toBe(false);
-  });
-});
-
-describe("validatePassportPT", () => {
-  it("should return true for valid passport", () => {
-    expect(validatePassportPT("P123456")).toBe(true);
-    expect(validatePassportPT("P987654")).toBe(true);
-    expect(validatePassportPT("P911111")).toBe(true);
-    expect(validatePassportPT("P900551")).toBe(true);
-  });
-
-  it("should return false for invalid passport", () => {
-    expect(validatePassportPT("1234")).toBe(false);
-    expect(validatePassportPT("P1234567X")).toBe(false);
-    expect(validatePassportPT("P987654321")).toBe(false);
   });
 });
 

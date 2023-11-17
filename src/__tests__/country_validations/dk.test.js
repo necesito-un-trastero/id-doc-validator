@@ -1,22 +1,4 @@
-const {
-  validatePassportDK,
-  validateVatDK,
-} = require("../../country_validations/dk");
-
-describe("validatePassportDK", () => {
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportDK("12345678")).toBe(false); // Less than 9 digits
-    expect(validatePassportDK("1234567890")).toBe(false); // More than 9 digits
-    expect(validatePassportDK("A12345678")).toBe(false); // Non-digit characters
-    expect(validatePassportDK("DK12345678")).toBe(false); // Includes country code
-    expect(validatePassportDK("12345678DK")).toBe(false); // Includes country code
-  });
-
-  it("should return true for a valid passport", () => {
-    expect(validatePassportDK("123456789")).toBe(true);
-    expect(validatePassportDK("987654321")).toBe(true);
-  });
-});
+const { validateVatDK } = require("../../country_validations/dk");
 
 describe("validateVatDK", () => {
   it("should return false for an invalid VAT", () => {

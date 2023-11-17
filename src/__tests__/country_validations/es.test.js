@@ -1,7 +1,6 @@
 const {
   validateNifES,
   validateNieES,
-  validatePassportES,
   validateVatES,
 } = require("../../country_validations/es");
 
@@ -56,24 +55,6 @@ describe("validateNieES", () => {
     expect(validateNieES("Y7227117A")).toBe(false);
     expect(validateNieES("Y4731627A")).toBe(false);
     expect(validateNieES("X9153879A")).toBe(false);
-  });
-});
-
-describe("validatePassportES", () => {
-  it("should return true for valid passport", () => {
-    expect(validatePassportES("paa333388")).toBe(true);
-    expect(validatePassportES("ZAB000234")).toBe(true);
-    expect(validatePassportES("ZAB000234J")).toBe(true);
-  });
-
-  it("should return false for invalid passport", () => {
-    expect(validatePassportES("12345678")).toBe(false);
-    expect(validatePassportES("12345678X1")).toBe(false);
-    expect(validatePassportES("12345678-X")).toBe(false);
-    expect(validatePassportES("A3082433R")).toBe(false);
-    expect(validatePassportES("47008288z")).toBe(false);
-    expect(validatePassportES("Z-3082433-R")).toBe(false);
-    expect(validatePassportES("ZA000234A")).toBe(false);
   });
 });
 

@@ -1,8 +1,4 @@
-const {
-  validateCfIT,
-  validatePassportIT,
-  validateVatIT,
-} = require("../../country_validations/it");
+const { validateCfIT, validateVatIT } = require("../../country_validations/it");
 
 describe("validateCfIT", () => {
   it("should return true for a valid Codice Fiscale", () => {
@@ -23,25 +19,6 @@ describe("validateCfIT", () => {
     expect(validateCfIT("SCRGZL98R27H501J")).toBe(false);
     expect(validateCfIT("PAUMRA46R67G702K")).toBe(false);
     expect(validateCfIT("LMNSMN60H25L219P")).toBe(false);
-  });
-});
-
-describe("validatePassportIT", () => {
-  it("should return true for a valid passport", () => {
-    expect(validatePassportIT("AA1234567")).toBe(true);
-    expect(validatePassportIT("a12345678")).toBe(true);
-    expect(validatePassportIT("B12345678")).toBe(true);
-    expect(validatePassportIT("123456789")).toBe(true);
-  });
-
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportIT("12345678")).toBe(false);
-    expect(validatePassportIT("12345678X")).toBe(false);
-    expect(validatePassportIT("12345678-X")).toBe(false);
-    expect(validatePassportIT("A3082433R")).toBe(false);
-    expect(validatePassportIT("47008288z")).toBe(false);
-    expect(validatePassportIT("Z-3082433-R")).toBe(false);
-    expect(validatePassportIT("AA123A123")).toBe(false);
   });
 });
 
