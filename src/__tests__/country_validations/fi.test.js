@@ -1,22 +1,4 @@
-const {
-  validatePassportFI,
-  validateVatFI,
-} = require("../../country_validations/fi");
-
-describe("validatePassportFI", () => {
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportFI("A1234567")).toBe(false); // Invalid series code
-    expect(validatePassportFI("AA123456")).toBe(false); // Less than 7 digits
-    expect(validatePassportFI("AA12345678")).toBe(false); // More than 7 digits
-    expect(validatePassportFI("AA1234X7")).toBe(false); // Non-digit character
-    expect(validatePassportFI("AA 1234567")).toBe(false); // Space
-  });
-
-  it("should return true for a valid passport", () => {
-    expect(validatePassportFI("AA1234567")).toBe(true);
-    expect(validatePassportFI("BB9876543")).toBe(true);
-  });
-});
+const { validateVatFI } = require("../../country_validations/fi");
 
 describe("validateVatFI", () => {
   it("should return false for an invalid VAT", () => {
@@ -26,8 +8,7 @@ describe("validateVatFI", () => {
   });
 
   it("should return true for a valid VAT", () => {
-    expect(validateVatFI("FI12345672")).toBe(true);
-    expect(validateVatFI("FI98765438")).toBe(true);
+    expect(validateVatFI("FI19254537")).toBe(true);
   });
 
   it("should return true for a VAT with invalid checksum", () => {

@@ -1,18 +1,25 @@
 const {
   validateNifES,
   validateNieES,
-  validatePassportES,
   validateVatES,
 } = require("../../country_validations/es");
 
 describe("validateNifES", () => {
-  it("should return true for valid DNI", () => {
+  it("should return true for valid personal DNI/NIF", () => {
     expect(validateNifES("92400040R")).toBe(true);
     expect(validateNifES("47008288z")).toBe(true);
     expect(validateNifES("01899814Z")).toBe(true);
   });
 
-  it("should return false for invalid DNI", () => {
+  it("should return true for a valid company NIF", () => {
+    expect(validateNifES("A58818501")).toBe(true);
+    expect(validateNifES("P0313300F")).toBe(true);
+    expect(validateNifES("B23260466")).toBe(true);
+    expect(validateNifES("S0602053A")).toBe(true);
+    expect(validateNifES("B18927350")).toBe(true);
+  });
+
+  it("should return false for invalid DNI/NIF", () => {
     expect(validateNifES("1234")).toBe(false);
     expect(validateNifES("12345678")).toBe(false);
     expect(validateNifES("12345678X1")).toBe(false);
@@ -22,6 +29,8 @@ describe("validateNifES", () => {
   it("should return false for invalid checksum", () => {
     expect(validateNifES("47008288a")).toBe(false);
     expect(validateNifES("92400040A")).toBe(false);
+    expect(validateNifES("B62922601")).toBe(false);
+    expect(validateNifES("E07567989")).toBe(false);
   });
 });
 
@@ -49,29 +58,19 @@ describe("validateNieES", () => {
   });
 });
 
-describe("validatePassportES", () => {
-  it("should return true for valid passport", () => {
-    expect(validatePassportES("paa333388")).toBe(true);
-    expect(validatePassportES("ZAB000234")).toBe(true);
-    expect(validatePassportES("ZAB000234J")).toBe(true);
-  });
-
-  it("should return false for invalid passport", () => {
-    expect(validatePassportES("12345678")).toBe(false);
-    expect(validatePassportES("12345678X1")).toBe(false);
-    expect(validatePassportES("12345678-X")).toBe(false);
-    expect(validatePassportES("A3082433R")).toBe(false);
-    expect(validatePassportES("47008288z")).toBe(false);
-    expect(validatePassportES("Z-3082433-R")).toBe(false);
-    expect(validatePassportES("ZA000234A")).toBe(false);
-  });
-});
-
 describe("validateVatES", () => {
   it("should return true for valid VAT", () => {
     expect(validateVatES("ES47008288Z")).toBe(true);
     expect(validateVatES("ES92400040R")).toBe(true);
     expect(validateVatES("ES01899814Z")).toBe(true);
+    expect(validateVatES("ES01931312W")).toBe(true);
+    expect(validateVatES("ESB19662295")).toBe(true);
+    expect(validateVatES("ESA58818501")).toBe(true);
+    expect(validateVatES("ESB66446931")).toBe(true);
+    expect(validateVatES("ESB64052392")).toBe(true);
+    expect(validateVatES("ES08848552S")).toBe(true);
+    expect(validateVatES("ESY9334449M")).toBe(true);
+    expect(validateVatES("ESX6169075S")).toBe(true);
   });
 
   it("should return false for invalid VAT", () => {

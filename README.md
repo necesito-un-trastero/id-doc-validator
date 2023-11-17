@@ -1,6 +1,6 @@
 # id-doc-validator
 
-A validator for different types of personal, entity and VAT ID for multiple countries.
+A validator for different types of personal, entity and VAT IDs for multiple countries.
 
 ## Supported Countries
 
@@ -90,7 +90,7 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 <summary><strong>Greece (GR)</strong></summary>
 
 - Passport
-- VAT (Value Added Tax ID)
+- VAT (Value Added Tax ID) (country code: EL)
 
 </details>
 
@@ -120,6 +120,14 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
+<summary><strong>Lithuania (LT)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Latvia (LV)</strong></summary>
 
 - Passport
@@ -128,7 +136,57 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
+<summary><strong>Luxembourg (LU)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Malta (MT)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Netherlands (NL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Poland (PL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Portugal (PT)</strong></summary>
+
+- CC (Cartão de Cidadão)
+- NIF (Número de Identificação Fiscal)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Republic of Cyprus (CY)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Romania (RO)</strong></summary>
 
 - Passport
 - VAT (Value Added Tax ID)
@@ -147,10 +205,24 @@ A validator for different types of personal, entity and VAT ID for multiple coun
 </details>
 
 <details>
-<summary><strong>Portugal (PT)</strong></summary>
+<summary><strong>Slovakia (SK)</strong></summary>
 
-- CC (Cartão de Cidadão)
-- NIF (Número de Identificação Fiscal)
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Slovenia (SL)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID) (country code: SI)
+
+</details>
+
+<details>
+<summary><strong>Sweden (SE)</strong></summary>
+
 - Passport
 - VAT (Value Added Tax ID)
 
@@ -174,30 +246,17 @@ To validate personal identification documents, use the `isValidIdDoc` function. 
 
 - `idDoc` (string): The identification document number to validate.
 - `country` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
-- `idDocType` (string, optional): The type of identification document to validate. For a list of supported identification document types, please refer to the expanded view of the [**Supported Countries**](#supported-countries). If this parameter is not passed, the function will check if the passed id doc is valid for any of the supported id docs for the country.
-
-#### Example Usage:
-
-```javascript
-// Import the id-doc-validator library
-const { isValidIdDoc } = require("id-doc-validator");
-
-const idDoc = "your_identification_number";
-const country = "ES"; // Country code
-const idDocType = "DNI"; // Type of identification document
-
-const isValid = isValidIdDoc(idDoc, country, idDocType);
-
-if (isValid) {
-  console.log("The identification document is valid.");
-} else {
-  console.log("The identification document is not valid.");
-}
-```
+- `idDocType` (string, optional): The type of identification document to validate. For a list of supported identification document types, please refer to the expanded view of the [**Supported Countries**](#supported-countries) (to validate VAT, use [`isValidVat`](#isvalidvat)). If this parameter is not passed, the function will check if the passed id doc is valid for any of the supported id docs for the country.
 
 ### `isValidVat`
 
-To validate a VAT number for an EU member state, use the `isValidEUVat` function. This function uses the API provided by the European Commission to validate the VAT number. It takes two parameters:
+To validate any VAT number from the list of [**Supported Countries**](#supported-countries), use the `isValidVat` function. It takes one parameter:
+
+- `vatNumber` (string): The VAT number to validate. Should include the VAT country code. In most cases it coincides with the alpha-2 country code, with some exceptions (e.g., "EL" for Greece instead of "GR").
+
+### `isValidViesVat`
+
+To validate a VAT number for an EU member state, use the `isValidViesVat` function. This function uses the API provided by the European Commission to validate the VAT number. It takes two parameters:
 
 - `vatNumber` (string): The VAT number to validate. Should not include the country code.
 - `countryCode` (string): The alpha-2 country code following ISO 3166-1 (e.g., "ES" for Spain, "FR" for France).
@@ -210,28 +269,6 @@ It returns an object with the following properties:
 
 Please note that the VIES API is very limited in the number of requests it can handle. Please use moderately and expect the service to be unavailable at times.
 
-#### Example Usage:
-
-```javascript
-// Import the id-doc-validator library
-const { isValidEUVat } = require("id-doc-validator");
-
-const vatNumberToCheck = "your_vat_number";
-const countryCode = "CC"; // Country code
-
-const { isValid, userError, vatNumber } = await isValidEUVat(
-  vatNumberToCheck,
-  countryCode
-);
-
-if (isValid) {
-  console.log("The VAT number is valid.");
-} else {
-  if (userError === "INVALID") console.log("The VAT number is not valid.");
-  else console.log("There was an error validating the VAT number.");
-}
-```
-
 ### `supportedIdDocsByCountry`
 
 To get a list of supported identification documents for a country, use the `supportedIdDocsByCountry` function. It takes one parameter:
@@ -240,35 +277,17 @@ To get a list of supported identification documents for a country, use the `supp
 
 It returns an array of strings with the supported identification documents for the country.
 
-#### Example Usage:
+### `supportedCountriesIdDoc`
 
-```javascript
-// Import the id-doc-validator library
-const { supportedIdDocsByCountry } = require("id-doc-validator");
-
-const country = "ES"; // Country code
-
-const supportedIdDocs = supportedIdDocsByCountry(country);
-
-console.log(supportedIdDocs);
-```
-
-### `supportedCountries`
-
-To get a list of supported countries, use the `supportedCountries` function. It takes no parameters.
+To get a list of supported countries for identification documents (not VAT), use the `supportedCountriesIdDoc` function. It takes no parameters.
 
 It returns an array of strings with the supported countries.
 
-#### Example Usage:
+### `supportedCountriesVat`
 
-```javascript
-// Import the id-doc-validator library
-const { supportedCountries } = require("id-doc-validator");
+To get a list of supported countries for VAT validation, use the `supportedCountriesVat` function. It takes no parameters.
 
-const supportedCountries = supportedCountries();
-
-console.log(supportedCountries);
-```
+It returns an array of strings with the supported VAT country codes for VAT validation.
 
 ## Resources
 

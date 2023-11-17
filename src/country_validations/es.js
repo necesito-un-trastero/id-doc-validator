@@ -1,7 +1,7 @@
 const { testStringAgainstRegex } = require("../utils");
 
 /**
- * Validates a Spanish Número de Identificación Fiscal (NIF) number.
+ * Validates a Spanish Número de Identificación Fiscal (NIF) number for individuals and companies.
  *
  * @param {string} nif - The NIF number to validate.
  * @returns {boolean} - Returns true if the NIF is valid, false otherwise.
@@ -12,10 +12,15 @@ const { testStringAgainstRegex } = require("../utils");
  * - The algorithm ensures that the NIF number is correctly formatted and that the checksum is valid.
  */
 const validateNifES = (nif) => {
-  const nifPattern = /^\d{8}[A-Z]$/;
-  if (!testStringAgainstRegex(nif, nifPattern)) return false;
+  const personalNifPattern = /^\d{8}[A-Z]$/;
+  const companyNifPattern = /^[ABCDEFGHJNPQRSUVW]\d{7}[0-9A-Z]$/;
 
-  if (!validateModulo23AlgorithmChecksum(nif)) return false;
+  const isPersonalNif = testStringAgainstRegex(nif, personalNifPattern);
+  const isCompanyNif = testStringAgainstRegex(nif, companyNifPattern);
+  if (!isPersonalNif && !isCompanyNif) return false;
+
+  if (isPersonalNif && !validateModulo23AlgorithmChecksum(nif)) return false;
+  if (isCompanyNif && !validateCompanyNifControl(nif)) return false;
 
   return true;
 };
@@ -50,22 +55,6 @@ const validateNieES = (nie) => {
 };
 
 /**
- * Validates a Spanish passport number.
- *
- * @param {string} passport - The passport number to validate.
- * @returns {boolean} - Returns true if the passport is valid, false otherwise.
- *
- * This function checks if the provided Spanish passport number adheres to the format requirements:
- * - It must consist of 3 letters followed by 6 digits and an optional letter.
- */
-const validatePassportES = (passport) => {
-  const passportPattern = /^[A-Z]{3}\d{6}[A-Z]?$/;
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-
-  return true;
-};
-
-/**
  * Validates a Spanish Value Added Tax (VAT) number.
  *
  * @param {string} vat - The VAT number to validate.
@@ -80,8 +69,9 @@ const validateVatES = (vat) => {
   // Check if the VAT number starts with ES
   if (vat.slice(0, 2) !== "ES") return false;
 
-  // Check if the VAT number (without starting ES) is a valid NIF
-  if (!validateNifES(vat.slice(2))) return false;
+  // Check if the VAT number (without starting ES) is a valid NIF or NIE
+  if (!validateNifES(vat.slice(2)) && !validateNieES(vat.slice(2)))
+    return false;
 
   return true;
 };
@@ -117,9 +107,59 @@ const validateModulo23AlgorithmChecksum = (idDoc) => {
   return true;
 };
 
+/**
+ * Validates the control letter of a Spanish company's NIF (Número de Identificación Fiscal), previously CIF.
+ *
+ * @param {string} nif - The NIF to be validated.
+ * @returns {boolean} - True if the provided NIF has a valid control letter, false otherwise.
+ */
+const validateCompanyNifControl = (nif) => {
+  const isControlLetter = ["N", "P", "Q", "R", "S", "W"].includes(
+    nif.slice(0, 1)
+  );
+  const centralDigits = nif.slice(1, -1);
+
+  const providedControl = nif.slice(-1);
+
+  // Add the digits of pairs
+  let sum = 0;
+
+  for (let i = 1; i < centralDigits.length; i += 2) {
+    const digit = parseInt(centralDigits[i], 10);
+    sum += digit;
+  }
+
+  // Add the digits of odd positions, multiplied by 2
+  for (let i = 0; i < centralDigits.length; i += 2) {
+    const digit = (parseInt(centralDigits[i], 10) * 2).toString();
+    const digitSum = digit
+      .split("")
+      .reduce((acc, curr) => acc + parseInt(curr, 10), 0);
+    sum += digitSum;
+  }
+
+  // Take the units digit of the sum
+  let unitsDigit = 10 - (sum % 10);
+
+  if (unitsDigit === 10) unitsDigit = 0;
+
+  let expectedControl = unitsDigit;
+
+  if (isControlLetter) {
+    const controlLetter = "JABCDEFGHI".charAt(unitsDigit);
+
+    expectedControl = controlLetter;
+  }
+
+  if (typeof expectedControl === "number") {
+    expectedControl = expectedControl.toString();
+  }
+
+  return providedControl === expectedControl;
+};
+
 module.exports = {
   validateNieES,
   validateNifES,
-  validatePassportES,
   validateVatES,
 };

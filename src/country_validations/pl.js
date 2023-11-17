@@ -1,13 +1,15 @@
 const { testStringAgainstRegex } = require("../utils");
 
-const validateVatLV = (vat) => {
-  const vatPattern = /^(LV)\d{11}$/;
+const validateVatPL = (vat) => {
+  const vatPattern = /^(PL)(\d{10})$/;
 
   if (!testStringAgainstRegex(vat, vatPattern)) return false;
+
+  //TODO: Validate check digit
 
   return true;
 };
 
 module.exports = {
-  validateVatLV,
+  validateVatPL,
 };

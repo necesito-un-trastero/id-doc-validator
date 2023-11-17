@@ -1,22 +1,4 @@
-const {
-  validatePassportEE,
-  validateVatEE,
-} = require("../../country_validations/ee");
-
-describe("validatePassportEE", () => {
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportEE("A1234567")).toBe(false); // Invalid series code
-    expect(validatePassportEE("AA123456")).toBe(false); // Less than 7 digits
-    expect(validatePassportEE("AA12345678")).toBe(false); // More than 7 digits
-    expect(validatePassportEE("AA1234X7")).toBe(false); // Non-digit character
-    expect(validatePassportEE("AB 0123456")).toBe(false); // Space character
-  });
-
-  it("should return true for a valid passport", () => {
-    expect(validatePassportEE("AA1234567")).toBe(true);
-    expect(validatePassportEE("BB9876543")).toBe(true);
-  });
-});
+const { validateVatEE } = require("../../country_validations/ee");
 
 describe("validateVatEE", () => {
   it("should return false for an invalid VAT", () => {

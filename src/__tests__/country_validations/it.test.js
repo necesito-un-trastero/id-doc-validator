@@ -1,8 +1,4 @@
-const {
-  validateCfIT,
-  validatePassportIT,
-  validateVatIT,
-} = require("../../country_validations/it");
+const { validateCfIT, validateVatIT } = require("../../country_validations/it");
 
 describe("validateCfIT", () => {
   it("should return true for a valid Codice Fiscale", () => {
@@ -26,25 +22,6 @@ describe("validateCfIT", () => {
   });
 });
 
-describe("validatePassportIT", () => {
-  it("should return true for a valid passport", () => {
-    expect(validatePassportIT("AA1234567")).toBe(true);
-    expect(validatePassportIT("a12345678")).toBe(true);
-    expect(validatePassportIT("B12345678")).toBe(true);
-    expect(validatePassportIT("123456789")).toBe(true);
-  });
-
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportIT("12345678")).toBe(false);
-    expect(validatePassportIT("12345678X")).toBe(false);
-    expect(validatePassportIT("12345678-X")).toBe(false);
-    expect(validatePassportIT("A3082433R")).toBe(false);
-    expect(validatePassportIT("47008288z")).toBe(false);
-    expect(validatePassportIT("Z-3082433-R")).toBe(false);
-    expect(validatePassportIT("AA123A123")).toBe(false);
-  });
-});
-
 describe("validateVatIT", () => {
   it("should return true for a valid VAT", () => {
     expect(validateVatIT("IT07643520567")).toBe(true);
@@ -54,6 +31,7 @@ describe("validateVatIT", () => {
     expect(validateVatIT("IT.07643520567")).toBe(true);
     expect(validateVatIT("IT-07643520567")).toBe(true);
     expect(validateVatIT("IT,07643520567")).toBe(true);
+    expect(validateVatIT("IT12133290960")).toBe(true);
   });
 
   it("should return false for an invalid VAT", () => {

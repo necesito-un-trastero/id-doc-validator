@@ -5,20 +5,136 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.5.7] - 2023-11-13
+## [0.7.0] - 2023-11-17
+
+### Added
+
+- Added support for VAT and passport number for the following countries: Lithuania, Luxembourg, Malta, Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia and Sweden.
+
+### Fixed
+
+### Changed
+
+### Removed
+
+## [0.6.5] - 2023-11-15
 
 ### Added
 
 ### Fixed
 
+- Added NIE as possible VAT number in Spain ("ES" + nie_number)
+
+### Changed
+
+### Removed
+
+## [0.6.4] - 2023-11-15
+
+### Added
+
+### Fixed
+
+- Fixed checksum check for Finnish VAT number.
+
+### Changed
+
+### Removed
+
+## [0.6.3] - 2023-11-15
+
+### Added
+
+### Fixed
+
+- Fixed checksum check for Luhn algorithm.
+
+### Changed
+
+### Removed
+
+## [0.6.2] - 2023-11-15
+
+### Added
+
+### Fixed
+
+- Fixed checksum validation for some NIFs in Spain.
+
+### Changed
+
+### Removed
+
+## [0.6.1] - 2023-11-15
+
+### Added
+
+### Fixed
+
+- Fixed VAT number validation for Germany.
+
+### Changed
+
+### Removed
+
+## [0.6.0] - 2023-11-15
+
+### Added
+
+### Fixed
+
+- Fixed check digit/number validation for Spanish NIF/CIF.
+
+### Changed
+
+### Removed
+
+## [0.5.9] - 2023-11-14
+
+### Added
+
+### Fixed
+
+- Added company NIF validation for Spain (previously CIF).
+
+### Changed
+
+- Update README.md to add clarification that VAT is is validated with `isValidVat`, not `isValidIdDoc`.
+
+### Removed
+
+## [0.5.8] - 2023-11-13
+
+### Added
+
+### Fixed
+
+- Fixed error in README.md in `supportedCountriesVat` function.
+
+### Changed
+
+- Change `supportedCountries` to `supportedCountriesIdDoc`.
+- Update README.md with updated function name.
+
+### Removed
+
+## [0.5.7] - 2023-11-13
+
+### Added
+
 - Add `isValidVat` and `supportedCountriesVat` functions.
+
+### Fixed
 
 ### Changed
 
 - Change `isValidEUVat` to `isValidViesVat`
 - Remove "vat" as an id doc type for `isValidIdDoc` function.
+- Updated README.md to include information about the new functions.
 
 ### Removed
+
+- Removed examples from README.md.
 
 ## [0.5.6] - 2023-11-13
 

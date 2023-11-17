@@ -1,9 +1,10 @@
 const {
   isValidIdDoc,
-  supportedCountries,
   supportedIdDocsByCountry,
   isValidViesVat,
   isValidVat,
+  supportedCountriesIdDoc,
+  supportedCountriesVat,
 } = require("..");
 
 describe("isValidIdDoc", () => {
@@ -140,6 +141,42 @@ describe("isValidIdDoc", () => {
   it("should return true for a valid passport from LV", () => {
     expect(isValidIdDoc("AA1234567", "LV", "passport")).toBe(true);
   });
+
+  it("should return true for a valid passport from LT", () => {
+    expect(isValidIdDoc("12345678", "LT", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from LU", () => {
+    expect(isValidIdDoc("1A2B3C4D", "LU", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from MT", () => {
+    expect(isValidIdDoc("1234567", "MT", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from NL", () => {
+    expect(isValidIdDoc("AA12VV3B7", "NL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from PL", () => {
+    expect(isValidIdDoc("AA1234567", "PL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from RO", () => {
+    expect(isValidIdDoc("12345678", "RO", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SK", () => {
+    expect(isValidIdDoc("A1234567", "SK", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SL", () => {
+    expect(isValidIdDoc("PA1234567", "SL", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from SE", () => {
+    expect(isValidIdDoc("12345678", "SE", "passport")).toBe(true);
+  });
 });
 
 describe("isValidVat", () => {
@@ -149,12 +186,12 @@ describe("isValidVat", () => {
     expect(isValidVat("BG123456789")).toBe(true);
     expect(isValidVat("CY12345678Z")).toBe(true);
     expect(isValidVat("CZ12345678")).toBe(true);
-    expect(isValidVat("DE12345678901")).toBe(true);
+    expect(isValidVat("DE123456789")).toBe(true);
     expect(isValidVat("DK12345678")).toBe(true);
     expect(isValidVat("EE123456789")).toBe(true);
     expect(isValidVat("EL123456789")).toBe(true);
     expect(isValidVat("ES47008288Z")).toBe(true);
-    expect(isValidVat("FI12345672")).toBe(true);
+    expect(isValidVat("FI19254537")).toBe(true);
     expect(isValidVat("FR12345678901")).toBe(true);
     expect(isValidVat("HR12345678901")).toBe(true);
     expect(isValidVat("HU12345678")).toBe(true);
@@ -162,6 +199,15 @@ describe("isValidVat", () => {
     expect(isValidVat("IT.07643520567")).toBe(true);
     expect(isValidVat("LV12345678901")).toBe(true);
     expect(isValidVat("PT123456789")).toBe(true);
+    expect(isValidVat("LT123456789")).toBe(true);
+    expect(isValidVat("LU12345678")).toBe(true);
+    expect(isValidVat("MT12345678")).toBe(true);
+    expect(isValidVat("NL123456789B01")).toBe(true);
+    expect(isValidVat("PL1234567890")).toBe(true);
+    expect(isValidVat("RO123456789")).toBe(true);
+    expect(isValidVat("SE123456789012")).toBe(true);
+    expect(isValidVat("SI12345678")).toBe(true);
+    expect(isValidVat("SK1234567895")).toBe(true);
   });
 });
 
@@ -200,9 +246,17 @@ describe("isValidViesVat", () => {
 
 describe("supportedCountries", () => {
   it("should return an array of strings with the supported countries", () => {
-    expect(Array.isArray(supportedCountries())).toBe(true);
-    expect(supportedCountries()).toContain("ES");
-    expect(supportedCountries()).toContain("FR");
+    expect(Array.isArray(supportedCountriesIdDoc())).toBe(true);
+    expect(supportedCountriesIdDoc()).toContain("ES");
+    expect(supportedCountriesIdDoc()).toContain("FR");
+  });
+});
+
+describe("supportedCountriesVat", () => {
+  it("should return an array of strings with the supported countries", () => {
+    expect(Array.isArray(supportedCountriesVat())).toBe(true);
+    expect(supportedCountriesVat()).toContain("ES");
+    expect(supportedCountriesVat()).toContain("FR");
   });
 });
 

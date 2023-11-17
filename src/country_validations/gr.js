@@ -1,13 +1,5 @@
 const { testStringAgainstRegex } = require("../utils");
 
-const validatePassportGR = (passport) => {
-  const passportPattern = /^[A-Z]{2}\d{7}$/;
-
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-
-  return true;
-};
-
 const validateVatGR = (vat) => {
   const vatPattern = /^EL\d{9}$/;
 
@@ -17,6 +9,5 @@ const validateVatGR = (vat) => {
 };
 
 module.exports = {
-  validatePassportGR,
   validateVatGR,
 };

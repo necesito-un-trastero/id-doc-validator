@@ -22,23 +22,6 @@ const validateCfIT = (cf) => {
 };
 
 /**
- * Validates an Italian passport number.
- *
- * @param {string} passport - The passport number to validate.
- * @returns {boolean} - Returns true if the passport is valid, false otherwise.
- *
- * This function checks if the provided passport number adheres to the format requirements for an Italian passport:
- * - It must consist of 9 characters, including letters and digits.
- */
-const validatePassportIT = (passport) => {
-  const passportPattern = /^[0-9A-Z]{2}\d{7}$/;
-
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-
-  return true;
-};
-
-/**
  * Validates an Italian Value Added Tax (VAT) number.
  *
  * @param {string} vat - The VAT number to validate.
@@ -108,6 +91,5 @@ const validateChecksumCfIT = (cf) => {
 
 module.exports = {
   validateCfIT,
-  validatePassportIT,
   validateVatIT,
 };

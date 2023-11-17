@@ -1,20 +1,4 @@
-const {
-  validatePassportHR,
-  validateVatHR,
-} = require("../../country_validations/hr");
-
-describe("validatePassportHR", () => {
-  it("should return false for an invalid passport", () => {
-    expect(validatePassportHR("12345678")).toBe(false);
-    expect(validatePassportHR("1234567890")).toBe(false);
-    expect(validatePassportHR("123ABC789")).toBe(false);
-    expect(validatePassportHR("123 456 789")).toBe(false);
-  });
-
-  it("should return true for a valid passport", () => {
-    expect(validatePassportHR("123456789")).toBe(true);
-  });
-});
+const { validateVatHR } = require("../../country_validations/hr");
 
 describe("validateVatHR", () => {
   it("should return false for an invalid vat", () => {

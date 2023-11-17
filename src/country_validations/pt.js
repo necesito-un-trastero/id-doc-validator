@@ -20,20 +20,6 @@ const validateCcPT = (cc) => {
 };
 
 /**
- * Validates a Portuguese passport number.
- *
- * @param {string} passport - The Portuguese passport number to validate.
- * @returns {boolean} - Returns true if the passport number is valid, false otherwise.
- */
-const validatePassportPT = (passport) => {
-  // Regular expression for Portuguese passport validation
-  const passportPattern = /^[A-Z]\d{6}$/;
-
-  if (!testStringAgainstRegex(passport, passportPattern)) return false;
-  return true;
-};
-
-/**
  * Validates a Portuguese NIF (Número de Identificação Fiscal) number.
  *
  * @param {string} nif - The Portuguese NIF number to validate.
@@ -114,7 +100,6 @@ const validateNifControlDigit = (nif) => {
 
 module.exports = {
   validateCcPT,
-  validatePassportPT,
   validateNifPT,
   validateVatPT,
 };
