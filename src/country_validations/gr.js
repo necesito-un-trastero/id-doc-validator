@@ -11,27 +11,27 @@ const validateVatGR = (vat) => {
 };
 
 /**
- * Checks the check digits of a Greek VAT number.
- * Code taken from https://stackoverflow.com/questions/4375511/greek-vat-validation-number-code at 2023-11-21
+ * Checks the check digit of a Greek VAT number.
+ * Code adapted from  Stack Overflow:
+ * https://stackoverflow.com/questions/4375511/greek-vat-validation-number-code
  *
- * @param {*} vat
+ * @param {string} vatNumber - The Greek VAT number to validate.
+ * @returns {boolean} - Returns true if the check digit is valid, false otherwise.
  */
-const validateGreekVatChecksum = (vatnumber) => {
-  console.log(vatnumber);
-
+const validateGreekVatChecksum = (vatNumber) => {
   var total = 0;
   var multipliers = [256, 128, 64, 32, 16, 8, 4, 2];
 
-  if (vatnumber.length !== 8 && vatnumber.length !== 9) return false;
+  if (vatNumber.length !== 8 && vatNumber.length !== 9) return false;
 
-  //eight character numbers should be prefixed with an 0.
-  if (vatnumber.length == 8) {
-    vatnumber = "0" + vatnumber;
+  // Eight character numbers should be prefixed with a 0
+  if (vatNumber.length == 8) {
+    vatNumber = "0" + vatNumber;
   }
 
   // Extract the next digit and multiply by the counter.
   for (var i = 0; i < 8; i++)
-    total = total + Number(vatnumber.charAt(i)) * multipliers[i];
+    total = total + Number(vatNumber.charAt(i)) * multipliers[i];
 
   // Establish check digit.
   total = total % 11;
@@ -41,8 +41,9 @@ const validateGreekVatChecksum = (vatnumber) => {
 
   // Compare it with the last character of the VAT number. If it is the same,
   // then it's a valid check digit.
-  if (total == vatnumber.slice(8, 9)) return true;
-  else return false;
+  if (total == vatNumber.slice(8, 9)) return true;
+
+  return false;
 };
 
 module.exports = {
