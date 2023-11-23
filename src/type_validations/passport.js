@@ -12,6 +12,7 @@ const passportRegexByCountryCodeMap = {
   ES: /^[A-Z]{3}\d{6}[A-Z]?$/,
   FI: /^[A-Z]{2}\d{7}$/,
   FR: /^\d{2}[A-Z]{2}\d{5}$/,
+  GB: /^\d{9}$/,
   GR: /^[A-Z]{2}\d{7}$/,
   HR: /^\d{9}$/,
   HU: /^[A-Z]{2}\d{6,7}$/,

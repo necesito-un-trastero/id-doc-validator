@@ -70,6 +70,10 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("12AB34567", "FR", "passport")).toBe(true);
   });
 
+  it("should return true for a valid passport from GB", () => {
+    expect(isValidIdDoc("123456789", "GB", "passport")).toBe(true);
+  });
+
   it("should return true for a valid cf from IT", () => {
     expect(isValidIdDoc("SCRGZL98R27H501I", "IT", "cf")).toBe(true);
   });
@@ -193,17 +197,21 @@ describe("isValidVat", () => {
     expect(isValidVat("ES47008288Z")).toBe(true);
     expect(isValidVat("FI19254537")).toBe(true);
     expect(isValidVat("FR12345678901")).toBe(true);
+    expect(isValidVat("GB211475494")).toBe(true);
+    expect(isValidVat("GB211475494000")).toBe(true);
+    expect(isValidVat("GBGD123")).toBe(true);
+    expect(isValidVat("GBHA678")).toBe(true);
     expect(isValidVat("HR12345678901")).toBe(true);
     expect(isValidVat("HU12345678")).toBe(true);
     expect(isValidVat("IE1234567X")).toBe(true);
     expect(isValidVat("IT.07643520567")).toBe(true);
-    expect(isValidVat("LV12345678901")).toBe(true);
-    expect(isValidVat("PT123456789")).toBe(true);
     expect(isValidVat("LT123456789")).toBe(true);
     expect(isValidVat("LU12345678")).toBe(true);
+    expect(isValidVat("LV12345678901")).toBe(true);
     expect(isValidVat("MT12345678")).toBe(true);
     expect(isValidVat("NL123456789B01")).toBe(true);
     expect(isValidVat("PL1234567890")).toBe(true);
+    expect(isValidVat("PT123456789")).toBe(true);
     expect(isValidVat("RO123456789")).toBe(true);
     expect(isValidVat("SE123456789012")).toBe(true);
     expect(isValidVat("SI12345678")).toBe(true);

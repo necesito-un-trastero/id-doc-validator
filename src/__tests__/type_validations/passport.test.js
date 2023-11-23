@@ -176,6 +176,19 @@ describe("validatePassport(FR)", () => {
   });
 });
 
+describe("validatePassport(GB)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("12345678", "GB")).toBe(false);
+    expect(validatePassport("1234567890", "GB")).toBe(false);
+    expect(validatePassport("123-456-789", "GB")).toBe(false);
+    expect(validatePassport("123ABC789", "GB")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("123456789", "GB")).toBe(true);
+  });
+});
+
 describe("validatePassport(GR)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("A1234567", "GR")).toBe(false);
