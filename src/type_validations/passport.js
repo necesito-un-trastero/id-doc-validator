@@ -4,6 +4,7 @@ const passportRegexByCountryCodeMap = {
   AT: /^[A-Z]\s?\d{7}$/,
   BE: /^[A-Z]{2}\d{7}$/,
   BG: /^\d{9}$/,
+  CA: /^[A-Z]{2}\d{6}$/,
   CY: /^[A-Z]\d{6,8}$/,
   CZ: /^\d{8}$/,
   DE: /^[CFGHJK][CFGHJKLMNPRTVWXYZ0-9]{8}\d?D?$/,

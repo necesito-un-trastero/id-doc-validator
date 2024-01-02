@@ -133,6 +133,9 @@ const supportedIdDocTypes = {
   BG: {
     passport: (passport) => validatePassport(passport, "BG"),
   },
+  CA: {
+    passport: (passport) => validatePassport(passport, "CA"),
+  },
   CY: {
     passport: (passport) => validatePassport(passport, "CY"),
   },

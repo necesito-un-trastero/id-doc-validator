@@ -29,6 +29,13 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Canada (CA)</strong></summary>
+
+- Passport
+
+</details>
+
+<details>
 <summary><strong>Czech Republic (CZ)</strong></summary>
 
 - Passport
