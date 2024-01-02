@@ -435,3 +435,19 @@ describe("validatePassport(SL)", () => {
     expect(validatePassport("PZ1234567", "SL")).toBe(true);
   });
 });
+
+describe("validatePassport(US)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234567", "US")).toBe(false);
+    expect(validatePassport("A123456", "US")).toBe(false);
+    expect(validatePassport("SE123456", "US")).toBe(false);
+    expect(validatePassport("123-456.789", "US")).toBe(false);
+    expect(validatePassport("L12345678", "US")).toBe(false);
+    expect(validatePassport("PA234567", "US")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("123456789", "US")).toBe(true);
+    expect(validatePassport("987654321", "US")).toBe(true);
+  });
+});

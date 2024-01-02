@@ -29,6 +29,7 @@ const passportRegexByCountryCodeMap = {
   SE: /^\d{8}$/,
   SK: /^[A-Z0-9]\d{7}$/,
   SL: /^P[A-Z]\d{7}$/,
+  US: /^\d{9}$/,
 };
 
 const validatePassport = (passport, countryCode) => {

@@ -215,6 +215,9 @@ const supportedIdDocTypes = {
   SL: {
     passport: (passport) => validatePassport(passport, "SL"),
   },
+  US: {
+    passport: (passport) => validatePassport(passport, "US"),
+  },
 };
 
 const supportedCountriesVatMap = {

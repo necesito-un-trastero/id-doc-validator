@@ -236,6 +236,13 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 
 </details>
 
+<details>
+<summary><strong>United States (US)</strong></summary>
+
+- Passport
+
+</details>
+
 ## Installation
 
 To use the `id-doc-validator` library in your project, you can install it via npm or yarn:
