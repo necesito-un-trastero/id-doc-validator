@@ -42,6 +42,14 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("47008288Z", "FR")).toBe(false);
   });
 
+  it("should return true for a valid passport from BR", () => {
+    expect(isValidIdDoc("AB123456", "BR", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from CA", () => {
+    expect(isValidIdDoc("AB123456", "CA", "passport")).toBe(true);
+  });
+
   it("should return true for a valid gic from DE", () => {
     expect(isValidIdDoc("l12341234", "DE", "gic")).toBe(true);
   });
@@ -158,6 +166,10 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("1234567", "MT", "passport")).toBe(true);
   });
 
+  it("should return true for a valid passport from MX", () => {
+    expect(isValidIdDoc("A12345678", "MX", "passport")).toBe(true);
+  });
+
   it("should return true for a valid passport from NL", () => {
     expect(isValidIdDoc("AA12VV3B7", "NL", "passport")).toBe(true);
   });
@@ -180,6 +192,10 @@ describe("isValidIdDoc", () => {
 
   it("should return true for a valid passport from SE", () => {
     expect(isValidIdDoc("12345678", "SE", "passport")).toBe(true);
+  });
+
+  it("should return true for a valid passport from US", () => {
+    expect(isValidIdDoc("123456789", "US", "passport")).toBe(true);
   });
 });
 
@@ -209,6 +225,7 @@ describe("isValidVat", () => {
     expect(isValidVat("LU12345678")).toBe(true);
     expect(isValidVat("LV12345678901")).toBe(true);
     expect(isValidVat("MT12345678")).toBe(true);
+    expect(isValidVat("MXABC012345ABC")).toBe(true);
     expect(isValidVat("NL123456789B01")).toBe(true);
     expect(isValidVat("PL1234567890")).toBe(true);
     expect(isValidVat("PT123456789")).toBe(true);
