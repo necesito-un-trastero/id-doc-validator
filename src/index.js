@@ -36,6 +36,7 @@ const { validateVatSL } = require("./country_validations/sl");
 const { validateVatSE } = require("./country_validations/se");
 const { validatePassport } = require("./type_validations/passport");
 const { validateVatGB } = require("./country_validations/gb");
+const { validateVatMX } = require("./country_validations/mx");
 
 const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (!idDoc || !country) {
@@ -192,6 +193,9 @@ const supportedIdDocTypes = {
   MT: {
     passport: (passport) => validatePassport(passport, "MT"),
   },
+  MX: {
+    passport: (passport) => validatePassport(passport, "MX"),
+  },
   NL: {
     passport: (passport) => validatePassport(passport, "NL"),
   },
@@ -242,6 +246,7 @@ const supportedCountriesVatMap = {
   LU: validateVatLU,
   LV: validateVatLV,
   MT: validateVatMT,
+  MX: validateVatMX,
   NL: validateVatNL,
   PL: validateVatPL,
   PT: validateVatPT,

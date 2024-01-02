@@ -152,6 +152,14 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Mexico (MX)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Netherlands (NL)</strong></summary>
 
 - Passport

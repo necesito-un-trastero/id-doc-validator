@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added passport validation for the United States.
+- Added passport validation for the following countries: Mexico, United States.
+- Added VAT number validation for the following countries: Mexico.
 
 ### Fixed
 

@@ -327,6 +327,23 @@ describe("validatePassport(MT)", () => {
   });
 });
 
+describe("validatePassport(MX)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234567", "MX")).toBe(false);
+    expect(validatePassport("12345678", "MX")).toBe(false);
+    expect(validatePassport("123456789", "MX")).toBe(false);
+    expect(validatePassport("1234567A", "MX")).toBe(false);
+    expect(validatePassport("1234567-A", "MX")).toBe(false);
+    expect(validatePassport("A1234567", "MX")).toBe(false);
+    expect(validatePassport("A-12345678", "MX")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("A12345678", "MX")).toBe(true);
+    expect(validatePassport("Z87654321", "MX")).toBe(true);
+  });
+});
+
 describe("validatePassport(NL)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("1234567", "NL")).toBe(false);
