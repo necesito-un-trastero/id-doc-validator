@@ -21,6 +21,14 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Brazil (BR)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Bulgaria (BG)</strong></summary>
 
 - Passport

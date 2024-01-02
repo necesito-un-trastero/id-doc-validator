@@ -49,6 +49,22 @@ describe("validatePassport(BG)", () => {
   });
 });
 
+describe("validatePassport(BR)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234", "BR")).toBe(false);
+    expect(validatePassport("A123456", "BR")).toBe(false);
+    expect(validatePassport("A 123456", "BR")).toBe(false);
+    expect(validatePassport("A12345678", "BR")).toBe(false);
+    expect(validatePassport("AB12345", "BR")).toBe(false);
+    expect(validatePassport("AB1234567", "BR")).toBe(false);
+    expect(validatePassport("AB-123456", "BR")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("AB123456", "BR")).toBe(true);
+  });
+});
+
 describe("validatePassport(CA)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("1234", "CA")).toBe(false);
