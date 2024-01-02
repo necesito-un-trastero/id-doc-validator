@@ -4,6 +4,8 @@ const passportRegexByCountryCodeMap = {
   AT: /^[A-Z]\s?\d{7}$/,
   BE: /^[A-Z]{2}\d{7}$/,
   BG: /^\d{9}$/,
+  BR: /^[A-Z]{2}\d{6}$/,
+  CA: /^[A-Z]{2}\d{6}$/,
   CY: /^[A-Z]\d{6,8}$/,
   CZ: /^\d{8}$/,
   DE: /^[CFGHJK][CFGHJKLMNPRTVWXYZ0-9]{8}\d?D?$/,
@@ -22,6 +24,7 @@ const passportRegexByCountryCodeMap = {
   LU: /^[A-Z0-9]{8}$/,
   LV: /^[0-9A-Z]{2}\d{7}$/,
   MT: /^\d{7}$/,
+  MX: /^[A-Z]\d{8}$/,
   NL: /^[A-Z]{2}[A-Z0-9]{6}\d$/,
   PL: /^[A-Z]{2}\d{7}$/,
   PT: /^[A-Z]\d{6}$/,
@@ -29,6 +32,7 @@ const passportRegexByCountryCodeMap = {
   SE: /^\d{8}$/,
   SK: /^[A-Z0-9]\d{7}$/,
   SL: /^P[A-Z]\d{7}$/,
+  US: /^\d{9}$/,
 };
 
 const validatePassport = (passport, countryCode) => {

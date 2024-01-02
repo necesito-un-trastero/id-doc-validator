@@ -21,10 +21,25 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Brazil (BR)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Bulgaria (BG)</strong></summary>
 
 - Passport
 - VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>Canada (CA)</strong></summary>
+
+- Passport
 
 </details>
 
@@ -152,6 +167,14 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Mexico (MX)</strong></summary>
+
+- Passport
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Netherlands (NL)</strong></summary>
 
 - Passport
@@ -233,6 +256,13 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 
 - Passport
 - VAT (Value Added Tax ID)
+
+</details>
+
+<details>
+<summary><strong>United States (US)</strong></summary>
+
+- Passport
 
 </details>
 

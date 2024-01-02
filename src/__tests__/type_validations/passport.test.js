@@ -49,6 +49,38 @@ describe("validatePassport(BG)", () => {
   });
 });
 
+describe("validatePassport(BR)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234", "BR")).toBe(false);
+    expect(validatePassport("A123456", "BR")).toBe(false);
+    expect(validatePassport("A 123456", "BR")).toBe(false);
+    expect(validatePassport("A12345678", "BR")).toBe(false);
+    expect(validatePassport("AB12345", "BR")).toBe(false);
+    expect(validatePassport("AB1234567", "BR")).toBe(false);
+    expect(validatePassport("AB-123456", "BR")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("AB123456", "BR")).toBe(true);
+  });
+});
+
+describe("validatePassport(CA)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234", "CA")).toBe(false);
+    expect(validatePassport("A123456", "CA")).toBe(false);
+    expect(validatePassport("A 123456", "CA")).toBe(false);
+    expect(validatePassport("A12345678", "CA")).toBe(false);
+    expect(validatePassport("ABC123456", "CA")).toBe(false);
+    expect(validatePassport("AB-123456", "CA")).toBe(false);
+    expect(validatePassport("12345678", "CA")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("AB123456", "CA")).toBe(true);
+  });
+});
+
 describe("validatePassport(CY)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("1234", "CY")).toBe(false);
@@ -327,6 +359,23 @@ describe("validatePassport(MT)", () => {
   });
 });
 
+describe("validatePassport(MX)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234567", "MX")).toBe(false);
+    expect(validatePassport("12345678", "MX")).toBe(false);
+    expect(validatePassport("123456789", "MX")).toBe(false);
+    expect(validatePassport("1234567A", "MX")).toBe(false);
+    expect(validatePassport("1234567-A", "MX")).toBe(false);
+    expect(validatePassport("A1234567", "MX")).toBe(false);
+    expect(validatePassport("A-12345678", "MX")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("A12345678", "MX")).toBe(true);
+    expect(validatePassport("Z87654321", "MX")).toBe(true);
+  });
+});
+
 describe("validatePassport(NL)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("1234567", "NL")).toBe(false);
@@ -433,5 +482,21 @@ describe("validatePassport(SL)", () => {
   it("should return true for a valid passport", () => {
     expect(validatePassport("PA1234567", "SL")).toBe(true);
     expect(validatePassport("PZ1234567", "SL")).toBe(true);
+  });
+});
+
+describe("validatePassport(US)", () => {
+  it("should return false for an invalid passport", () => {
+    expect(validatePassport("1234567", "US")).toBe(false);
+    expect(validatePassport("A123456", "US")).toBe(false);
+    expect(validatePassport("SE123456", "US")).toBe(false);
+    expect(validatePassport("123-456.789", "US")).toBe(false);
+    expect(validatePassport("L12345678", "US")).toBe(false);
+    expect(validatePassport("PA234567", "US")).toBe(false);
+  });
+
+  it("should return true for a valid passport", () => {
+    expect(validatePassport("123456789", "US")).toBe(true);
+    expect(validatePassport("987654321", "US")).toBe(true);
   });
 });
