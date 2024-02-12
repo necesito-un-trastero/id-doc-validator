@@ -206,6 +206,7 @@ describe("isValidVat", () => {
     expect(isValidVat("BG123456789")).toBe(true);
     expect(isValidVat("BR11.111.111/0001-55")).toBe(true);
     expect(isValidVat("BR123.456.789-00")).toBe(true);
+    expect(isValidVat("CO123456789A")).toBe(true);
     expect(isValidVat("CY12345678Z")).toBe(true);
     expect(isValidVat("CZ12345678")).toBe(true);
     expect(isValidVat("DE123456789")).toBe(true);

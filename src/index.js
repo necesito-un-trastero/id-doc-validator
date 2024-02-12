@@ -38,6 +38,7 @@ const { validatePassport } = require("./type_validations/passport");
 const { validateVatGB } = require("./country_validations/gb");
 const { validateVatMX } = require("./country_validations/mx");
 const { validateVatBR } = require("./country_validations/br");
+const { validateVatCO } = require("./country_validations/co");
 
 const isValidIdDoc = (idDoc, country, idDocType = "") => {
   if (!idDoc || !country) {
@@ -236,6 +237,7 @@ const supportedCountriesVatMap = {
   BE: validateVatBE,
   BG: validateVatBG,
   BR: validateVatBR,
+  CO: validateVatCO,
   CY: validateVatCY,
   CZ: validateVatCZ,
   DE: validateVatDE,

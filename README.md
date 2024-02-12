@@ -44,6 +44,13 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 </details>
 
 <details>
+<summary><strong>Colombia (CO)</strong></summary>
+
+- VAT (Value Added Tax ID)
+
+</details>
+
+<details>
 <summary><strong>Czech Republic (CZ)</strong></summary>
 
 - Passport
