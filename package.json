@@ -1,6 +1,6 @@
 {
   "name": "id-doc-validator",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "homepage": "https://github.com/necesito-un-trastero/id-doc-validator",
   "description": "A validator for different types of personal ID for multiple countries.",
   "main": "src/index.js",

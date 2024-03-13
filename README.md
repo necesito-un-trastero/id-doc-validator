@@ -226,8 +226,7 @@ A validator for different types of personal, entity and VAT IDs for multiple cou
 <details>
 <summary><strong>Spain (ES)</strong></summary>
 
-- DNI (Documento Nacional de Identidad)
-- NIF (Número de Identificación Fiscal)
+- DNI/NIF (Documento Nacional de Identidad / Número de Identificación Fiscal)
 - NIE (Número de Identificación de Extranjero)
 - Passport
 - VAT (Value Added Tax ID)
