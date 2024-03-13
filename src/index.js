@@ -158,7 +158,6 @@ const supportedIdDocTypes = {
     passport: (passport) => validatePassport(passport, "EE"),
   },
   ES: {
-    dni: validateNifES,
     nif: validateNifES,
     nie: validateNieES,
     passport: (passport) => validatePassport(passport, "ES"),

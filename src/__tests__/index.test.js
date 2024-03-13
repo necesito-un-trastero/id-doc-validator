@@ -11,12 +11,12 @@ describe("isValidIdDoc", () => {
   it("should return false for missing parameters", () => {
     expect(isValidIdDoc()).toBe(false);
     expect(isValidIdDoc("123456789")).toBe(false);
-    expect(isValidIdDoc("1234", null, "dni")).toBe(false);
+    expect(isValidIdDoc("1234", null, "nif")).toBe(false);
   });
 
   it("should return false for invalid parameters", () => {
-    expect(isValidIdDoc(123456789, "ES", "dni")).toBe(false);
-    expect(isValidIdDoc("123456789", 123, "dni")).toBe(false);
+    expect(isValidIdDoc(123456789, "ES", "nif")).toBe(false);
+    expect(isValidIdDoc("123456789", 123, "nif")).toBe(false);
     expect(isValidIdDoc("123456789", "ES", 123)).toBe(false);
   });
 
@@ -29,7 +29,7 @@ describe("isValidIdDoc", () => {
   });
 
   it("should return true for a valid id document", () => {
-    expect(isValidIdDoc("47008288Z", "ES", "dni")).toBe(true);
+    expect(isValidIdDoc("47008288Z", "ES", "nif")).toBe(true);
   });
 
   it("should return true for a valid id document without specifying the type", () => {
@@ -58,8 +58,8 @@ describe("isValidIdDoc", () => {
     expect(isValidIdDoc("c123CFG45", "DE", "passport")).toBe(true);
   });
 
-  it("should return true for a valid dni from ES", () => {
-    expect(isValidIdDoc("47008288Z", "ES", "dni")).toBe(true);
+  it("should return true for a valid nif from ES", () => {
+    expect(isValidIdDoc("47008288Z", "ES", "nif")).toBe(true);
   });
 
   it("should return true for a valid nie from ES", () => {
@@ -291,7 +291,7 @@ describe("supportedCountriesVat", () => {
 describe("supportedIdDocsByCountry", () => {
   it("should return an array of supported id docs for a country", () => {
     expect(Array.isArray(supportedIdDocsByCountry("ES"))).toBe(true);
-    expect(supportedIdDocsByCountry("ES")).toContain("dni");
+    expect(supportedIdDocsByCountry("ES")).toContain("nif");
     expect(supportedIdDocsByCountry("ES")).toContain("nie");
     expect(supportedIdDocsByCountry("ES")).toContain("passport");
   });
