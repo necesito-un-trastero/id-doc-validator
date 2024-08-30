@@ -271,7 +271,7 @@ describe("validatePassport(IE)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("K1234567", "IE")).toBe(false);
     expect(validatePassport("PLA123456", "IE")).toBe(false);
-    expect(validatePassport("ZA1234567", "IE")).toBe(false);
+    expect(validatePassport("1234567", "IE")).toBe(false);
     expect(validatePassport("PA123456", "IE")).toBe(false);
     expect(validatePassport("PA12345678", "IE")).toBe(false);
     expect(validatePassport("PA 1234568", "IE")).toBe(false);
@@ -280,6 +280,8 @@ describe("validatePassport(IE)", () => {
   it("should return true for a valid passport", () => {
     expect(validatePassport("PA1234567", "IE")).toBe(true);
     expect(validatePassport("LA1234567", "IE")).toBe(true);
+    expect(validatePassport("L11234567", "IE")).toBe(true);
+    expect(validatePassport("111234567", "IE")).toBe(true);
   });
 });
 
@@ -456,7 +458,7 @@ describe("validatePassport(SE)", () => {
 describe("validatePassport(SK)", () => {
   it("should return false for an invalid passport", () => {
     expect(validatePassport("1234567", "SK")).toBe(false);
-    expect(validatePassport("123456789", "SK")).toBe(false);
+    expect(validatePassport("1234567890", "SK")).toBe(false);
     expect(validatePassport("A123456", "SK")).toBe(false);
     expect(validatePassport("SE123456", "SK")).toBe(false);
     expect(validatePassport("123-456.78", "SK")).toBe(false);
@@ -465,6 +467,7 @@ describe("validatePassport(SK)", () => {
   it("should return true for a valid passport", () => {
     expect(validatePassport("12345678", "SK")).toBe(true);
     expect(validatePassport("a1234567", "SK")).toBe(true);
+    expect(validatePassport("AB7654321", "SK")).toBe(true);
   });
 });
 

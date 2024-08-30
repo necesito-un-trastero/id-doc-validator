@@ -18,7 +18,7 @@ const passportRegexByCountryCodeMap = {
   GR: /^[A-Z]{2}\d{7}$/,
   HR: /^\d{9}$/,
   HU: /^[A-Z]{2}\d{6,7}$/,
-  IE: /^[PL][A-Z]\d{7}$/,
+  IE: /^[0-9A-Z]{2}\d{7}$/,
   IT: /^[0-9A-Z]{2}\d{7}$/,
   LT: /^\d{8}$/,
   LU: /^[A-Z0-9]{8}$/,
@@ -30,7 +30,7 @@ const passportRegexByCountryCodeMap = {
   PT: /^[A-Z]\d{6}$/,
   RO: /^\d{8,9}$/,
   SE: /^\d{8}$/,
-  SK: /^[A-Z0-9]\d{7}$/,
+  SK: /^[A-Z0-9]{1,2}\d{7}$/,
   SL: /^P[A-Z]\d{7}$/,
   US: /^\d{9}$/,
 };
